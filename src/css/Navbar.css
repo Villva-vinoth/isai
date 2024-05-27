@@ -1,0 +1,23 @@
+.logo{
+    margin: 1%;
+    width: 80px;
+    height: 80px;
+    /* background-color: red; */
+}
+.main-nav-contain{
+    justify-content: space-evenly;
+}
+.index{
+    z-index: 99;
+}
+.navi{
+    color: #D24545 !important;
+    /* background-color: red; */
+}
+.navigation:hover{
+    color: blueviolet !important;
+}
+
+.ft-navigation:hover{
+    color: blueviolet !important;
+}

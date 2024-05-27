@@ -1,7 +1,29 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
+@import url('https://fonts.googleapis.com/css2?family=Coiny&display=swap');
+@import url('https://fonts.googleapis.com/css2?=Kavivanar&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400..900;1,400..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap');
 body {
-  background-color: #000300;
+  background-color: white;
+
+  /* background-position: center center; */
 }
+
+.coiny-class {
+  font-family: 'Coiny', cursive;
+}
+
+.kavivanar-class{
+  font-family: 'Kavivanar';
+  font-weight: 600;
+  font-style: italic;
+}
+.alegreya-class{
+  font-family: 'Alegreya';
+}
+.exo-2-class{
+  font-family: 'Exo+2';
+}
+
