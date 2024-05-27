@@ -24,7 +24,7 @@ const Navbar = () => {
         <li className= {window.location.pathname== '/' ?'p-3 cursor-pointer navigation navi' :'p-3 navigation cursor-pointer'} onClick={()=>{setNavigation(0);nav('/')}}>HOME</li>
         <li className= {window.location.pathname== '' ?'p-3 cursor-pointer navigation navi' :'p-3 navigation cursor-pointer'} onClick={()=>setNavigation(1)}>INTERNATIONAL BRANCHES</li>
         <li className= {window.location.pathname== '/2017' || window.location.pathname== '/2018' || window.location.pathname== '/2019' || window.location.pathname== '/2020' || window.location.pathname== '/2021' || window.location.pathname== '/2022' ?'p-3 cursor-pointer navigation navi' :'p-3 navigation cursor-pointer'} onClick={()=>{setNavigation(7);nav('/2017')}}>EVENTS</li>
-        <li className= {window.location.pathname== '' ?'p-3 cursor-pointer navigation navi' :'p-3 navigation cursor-pointer'} onClick={()=>setNavigation(3)}>SUPPORTERS</li>
+        <li className= {window.location.pathname== '' ?'p-3 cursor-pointer navigation navi' :'p-3 navigation cursor-pointer'} onClick={()=>setNavigation(3)}>KODAI ISAI</li>
         <li className= {window.location.pathname== '' ?'p-3 cursor-pointer navigation navi' :'p-3 navigation cursor-pointer'} onClick={()=>setNavigation(4)}>AWARDS</li>
         <li className= {window.location.pathname== '/about-us' ?'p-3 cursor-pointer navigation navi' :'p-3 navigation cursor-pointer'} onClick={()=>{setNavigation(5);nav('/about-us')}}>ABOUT</li>
         <li className= {window.location.pathname== '/contact-us' ?'p-3 cursor-pointer navigation navi' :'p-3 navigation cursor-pointer'} onClick={()=>{setNavigation(6);nav('/contact-us')}}>CONTACT</li>
@@ -35,14 +35,14 @@ const Navbar = () => {
       </div>
       <ul className={navi ? 'fixed left-0 top-0 w-[80%] h-[100%] border-r border-r-gray-900 bg-[white] ease-in-out duration-500 index' : 'ease-in-out duration-10 fixed left-[-100%]'}>
       <img src={logo1} alt='' className='w-50 h-20 m-10'  />
-          <li className='p-4 border-b border-gray-600 cursor-pointer'>Home</li>
-          <li className='p-4 border-b border-gray-600 cursor-pointer'>INTERNATIONAL BRANCHES</li>
-          <li className='p-4 border-b border-gray-600 cursor-pointer'>EVENTS</li>
-          <li className='p-4 border-b border-gray-600 cursor-pointer'>KODAI ISAI</li>
-          <li className='p-4 border-b border-gray-600 cursor-pointer'>SUPPORTERS</li>
-          <li className='p-4 border-b border-gray-600 cursor-pointer'>AWARDS</li>
-          <li className='p-4 border-b border-gray-600 cursor-pointer'>ABOUT</li>
-          <li className='p-4 cursor-pointer'>CONTACT</li>
+          <li className='p-4 border-b border-gray-600 cursor-pointer'  onClick={()=>{setNavigation(0);nav('/')}}>Home</li>
+          <li className='p-4 border-b border-gray-600 cursor-pointer'  onClick={()=>{setNavigation(0);nav('')}}>INTERNATIONAL BRANCHES</li>
+          <li className='p-4 border-b border-gray-600 cursor-pointer'  onClick={()=>{setNavigation(0);nav('/2017')}}>EVENTS</li>
+          <li className='p-4 border-b border-gray-600 cursor-pointer'  onClick={()=>{setNavigation(0);nav('/')}}>KODAI ISAI</li>
+          {/* <li className='p-4 border-b border-gray-600 cursor-pointer'  onClick={()=>{setNavigation(0);nav('/')}}>SUPPORTERS</li> */}
+          <li className='p-4 border-b border-gray-600 cursor-pointer'  onClick={()=>{setNavigation(0);nav('/')}}>AWARDS</li>
+          <li className='p-4 border-b border-gray-600 cursor-pointer'  onClick={()=>{setNavigation(0);nav('/about-us')}}>ABOUT</li>
+          <li className='p-4 cursor-pointer'  onClick={()=>{setNavigation(0);nav('/contact-us')}}>CONTACT</li>
       </ul>
       </div>
     </div>
