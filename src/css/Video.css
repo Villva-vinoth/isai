@@ -1,0 +1,6 @@
+.video-class{
+    border-radius: 20px;
+}
+.video-container{
+    background-image: linear-gradient(65deg, rgba(238, 237, 181, 0.89),rgba(238, 181, 191, 0.89),rgba(158, 158, 238, 0.87));
+}

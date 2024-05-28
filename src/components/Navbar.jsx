@@ -35,14 +35,14 @@ const Navbar = () => {
       </div>
       <ul className={navi ? 'fixed left-0 top-0 w-[80%] h-[100%] border-r border-r-gray-900 bg-[white] ease-in-out duration-500 index' : 'ease-in-out duration-10 fixed left-[-100%]'}>
       <img src={logo1} alt='' className='w-50 h-20 m-10'  />
-          <li className='p-4 border-b border-gray-600 cursor-pointer'  onClick={()=>{setNavigation(0);nav('/')}}>Home</li>
-          <li className='p-4 border-b border-gray-600 cursor-pointer'  onClick={()=>{setNavigation(0);nav('')}}>INTERNATIONAL BRANCHES</li>
-          <li className='p-4 border-b border-gray-600 cursor-pointer'  onClick={()=>{setNavigation(0);nav('/2017')}}>EVENTS</li>
-          <li className='p-4 border-b border-gray-600 cursor-pointer'  onClick={()=>{setNavigation(0);nav('/')}}>KODAI ISAI</li>
+          <li className='p-4 border-b border-gray-600 cursor-pointer'  onClick={()=>{handleNav();nav('/')}}>Home</li>
+          <li className='p-4 border-b border-gray-600 cursor-pointer'  onClick={()=>{handleNav();nav('')}}>INTERNATIONAL BRANCHES</li>
+          <li className='p-4 border-b border-gray-600 cursor-pointer'  onClick={()=>{handleNav();nav('/2017')}}>EVENTS</li>
+          <li className='p-4 border-b border-gray-600 cursor-pointer'  onClick={()=>{handleNav();nav('/')}}>KODAI ISAI</li>
           {/* <li className='p-4 border-b border-gray-600 cursor-pointer'  onClick={()=>{setNavigation(0);nav('/')}}>SUPPORTERS</li> */}
-          <li className='p-4 border-b border-gray-600 cursor-pointer'  onClick={()=>{setNavigation(0);nav('/')}}>AWARDS</li>
-          <li className='p-4 border-b border-gray-600 cursor-pointer'  onClick={()=>{setNavigation(0);nav('/about-us')}}>ABOUT</li>
-          <li className='p-4 cursor-pointer'  onClick={()=>{setNavigation(0);nav('/contact-us')}}>CONTACT</li>
+          <li className='p-4 border-b border-gray-600 cursor-pointer'  onClick={()=>{handleNav();nav('/')}}>AWARDS</li>
+          <li className='p-4 border-b border-gray-600 cursor-pointer'  onClick={()=>{handleNav();nav('/about-us')}}>ABOUT</li>
+          <li className='p-4 cursor-pointer'  onClick={()=>{handleNav();nav('/contact-us')}}>CONTACT</li>
       </ul>
       </div>
     </div>

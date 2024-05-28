@@ -22,13 +22,6 @@ import image20 from '../assets/2017/20.jpg'
 
 
 let awards = [
-    // {   
-    //     id:21,
-    //     cover:[
-    //         {id:1, img:cover1},
-    //         {id:2, img:cover2}
-    //     ]
-    // },
     {
         id:1,
         img:image1

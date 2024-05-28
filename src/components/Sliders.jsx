@@ -18,9 +18,12 @@ const Sliders = () => {
                 onClick={onClick}
                 style={{
                     cursor: 'pointer',
-                    boxShadow: "0 0 5px rgb(207, 207, 207)",
-                    backgroundColor: "white",
-                    width: "20px",
+                    boxShadow: "0 2px 5px rgb(207, 207, 207)",
+                    backgroundColor: "red",
+                    borderRadius:"10px",
+                    width: "35px",
+                    height:"35px",
+                    fontSize:"20px",
                     textAlign: "center",
                     position: "absolute",
                     top: "40%",
@@ -43,10 +46,13 @@ const Sliders = () => {
                 onClick={onClick}
                 style={{
                     cursor: 'pointer',
-                    boxShadow: "0 0 5px rgb(207, 207, 207)",
-                    backgroundColor: "white",
-                    width: "20px",
+                    boxShadow: "0 2px 5px rgb(207, 207, 207)",
+                    backgroundColor: "red",
+                    borderRadius:"10px",
+                    width: "35px",
+                    height:"35px",
                     textAlign: "center",
+                    fontSize:"20px",
                     position: "absolute",
                     top: "40%",
                     right: "10px",

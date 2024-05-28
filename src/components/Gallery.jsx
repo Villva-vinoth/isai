@@ -36,14 +36,18 @@ function Gallery({ imageData, title, value, seasons, visible }) {
   const [select, setSelect] = useState(2017)
 
   const handleClick = (index) => {
-    setRefresh(false)
-    setSelect(index)
-    console.log(index)
-    nav(`/${index}`)
-    setTimeout(() => {
-      setRefresh(true)
-    }, 200)
+
+
+      setRefresh(false)
+      setSelect(index)
+      console.log(index)
+      nav(`/${index}`)
+      setTimeout(() => {
+        setRefresh(true)
+      }, 200)
+   
   }
+
 
   const [navigation, setNavigation] = useState(false)
 
@@ -63,18 +67,18 @@ function Gallery({ imageData, title, value, seasons, visible }) {
 
 
 
-  const handlePrev = (props) =>{
-      const prev = datas.map((item)=>item.cover)
-      const newIndex = ((props.id - 1) % prev[0].length) || prev[0].length
-      const pre = prev[0].filter((itm)=>itm.id === newIndex)
-      setImage(pre[0])  
+  const handlePrev = (props) => {
+    const prev = datas.map((item) => item.cover)
+    const newIndex = ((props.id - 1) % prev[0].length) || prev[0].length
+    const pre = prev[0].filter((itm) => itm.id === newIndex)
+    setImage(pre[0])
   }
 
-  const handleNext = (props)=>{
-    const prev = datas.map((item)=>item.cover)
-      const newIndex = ((props.id + 1) % prev[0].length) || prev[0].length
-      const pre = prev[0].filter((itm)=>itm.id === newIndex)
-      setImage(pre[0])  
+  const handleNext = (props) => {
+    const prev = datas.map((item) => item.cover)
+    const newIndex = ((props.id + 1) % prev[0].length) || prev[0].length
+    const pre = prev[0].filter((itm) => itm.id === newIndex)
+    setImage(pre[0])
   }
 
   const handleImageClick2 = (props) => {
@@ -89,20 +93,20 @@ function Gallery({ imageData, title, value, seasons, visible }) {
 
 
 
-  const handlePrev2 = (props) =>{
-      const prev = datas.filter((item)=> !item.cover)
-      const newIndex = ((props.id - 1) % prev.length) || prev.length
-      const pre = prev.filter((itm)=>itm.id === newIndex)
-      setImage2(pre[0])  
+  const handlePrev2 = (props) => {
+    const prev = datas.filter((item) => !item.cover)
+    const newIndex = ((props.id - 1) % prev.length) || prev.length
+    const pre = prev.filter((itm) => itm.id === newIndex)
+    setImage2(pre[0])
 
-      
+
   }
 
-  const handleNext2 = (props)=>{
-    const prev = datas.filter((item)=> !item.cover)
+  const handleNext2 = (props) => {
+    const prev = datas.filter((item) => !item.cover)
     const newIndex = ((props.id + 1) % prev.length) || prev.length
-    const pre = prev.filter((itm)=>itm.id === newIndex)
-    setImage2(pre[0])  
+    const pre = prev.filter((itm) => itm.id === newIndex)
+    setImage2(pre[0])
 
   }
 
@@ -135,7 +139,7 @@ function Gallery({ imageData, title, value, seasons, visible }) {
               season && season.map((item, index) => {
                 return (
                   <div className="sub-menu flex items-center justify-center hover:text-[#e736e7] hover:scale-125 " key={index}>
-                    <div className={select == item ? 'lg:text-5xl text-lg text-[#a52a2a] md:text-3xl alegreya-class p-2' : "lg:text-2xl md:text-xl text-sm"} onClick={() => { handleClick(item); }}>{item}</div>
+                    <div className={select == item ? 'lg:text-3xl text-lg text-[#a52a2a] md:text-3xl alegreya-class p-2' : "lg:text-xl md:text-xl text-sm"} onClick={() => { handleClick(item); }}>{item}</div>
                   </div>
                 )
               })
@@ -162,7 +166,7 @@ function Gallery({ imageData, title, value, seasons, visible }) {
           <div className={value === 4 ? "lg:columns-4 md:columns-2 columns-1 lg:w-[95%] w-[100%] lg:mx-auto mx-auto my-0  lg:gap-1 gap-0 " : "lg:columns-3 md:columns-2 columns-1 lg:w-[95%] w-[100%] lg:mx-auto mx-auto my-0  lg:gap-1 gap-0 "}>
             {datas.map((item, index) => {
               return (
-                <div className="cursor-pointer lg:w-[100%] mx-auto lg:p-1 md:p-1 p-2 image-div" key={index} onClick={()=>handleImageClick2(item)}>
+                <div className="cursor-pointer lg:w-[100%] mx-auto lg:p-1 md:p-1 p-2 image-div" key={index} onClick={() => handleImageClick2(item)}>
                   {
                     item.img && <img src={item.img} alt="text" className="lg:w-[100%] " />
                   }
@@ -180,28 +184,28 @@ function Gallery({ imageData, title, value, seasons, visible }) {
 
       <div className={isVisible === 0 ? "click-to-view" : "hidden"}>
         <span className="absolute top-0 right-0 click-to-view-icon lg:text-5xl md:text-5xl text-3xl" onClick={() => setIsvisible(1)}>
-          <IoIosCloseCircle  color="red" /></span>
-            <div className="flex w-full click-to-view-main-containter">
-              <div onClick={()=>{handlePrev(image)}}><FcPrevious  size={30}/></div>
-            <img src={image.img} alt="text"  className="lg:w-[800px] md:w-[700px] w-[250px] image-rounded" />
-            <span onClick={()=>{handleNext(image)}}><FcNext size={30}/></span>
+          <IoIosCloseCircle color="red" /></span>
+        <div className="flex w-full click-to-view-main-containter">
+          <div onClick={() => { handlePrev(image) }}><FcPrevious size={30} /></div>
+          <img src={image.img} alt="text" className="lg:w-[800px] md:w-[700px] w-[250px] image-rounded" />
+          <span onClick={() => { handleNext(image) }}><FcNext size={30} /></span>
 
-            </div>
+        </div>
 
-            
+
       </div>
 
       <div className={isVisible2 === 0 ? "click-to-view" : "hidden"}>
         <span className="absolute top-0 right-0 click-to-view-icon lg:text-5xl md:text-5xl text-3xl" onClick={() => setIsvisible2(1)}>
-          <IoIosCloseCircle  color="red" /></span>
-            <div className="flex w-full click-to-view-main-containter">
-              <div onClick={()=>{handlePrev2(image2)}}><FcPrevious  size={30}/></div>
-            <img src={image2.img} alt="text"  className="lg:w-[800px] md:w-[700px] w-[250px] image-rounded" />
-            <span onClick={()=>{handleNext2(image2)}}><FcNext size={30}/></span>
+          <IoIosCloseCircle color="red" /></span>
+        <div className="flex w-full click-to-view-main-containter">
+          <div onClick={() => { handlePrev2(image2) }}><FcPrevious size={30} /></div>
+          <img src={image2.img} alt="text" className="lg:w-[800px] md:w-[700px] w-[250px] image-rounded" />
+          <span onClick={() => { handleNext2(image2) }}><FcNext size={30} /></span>
 
-            </div>
+        </div>
 
-            
+
       </div>
 
     </>

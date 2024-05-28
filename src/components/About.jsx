@@ -8,8 +8,8 @@ const About = () => {
 
     return (
         <div>
-            <div className='w-full bg-white py-1 px-4'>
-                <p className='text-[#D24545] font-bold text-3xl text-center p-10'>About Us</p>
+            <div className='w-full bg-white py-2 px-4'>
+                <p className='text-[#D24545] font-bold lg:text-3xl text-center lg:p-3 md:p-3 p-2'>About Us</p>
                 <div className='max-w-[1240px] mx-auto grid md:grid-cols-2 pb-5'>
                     <img className='w-[500px] mx-auto my-4' src={'https://tamilcultural.org/img/about.jpg'} alt='/' style={{ mixBlendMode: 'multiply' }} />
                     <div className='flex flex-col justify-center'>
