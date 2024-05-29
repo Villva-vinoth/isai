@@ -8,7 +8,11 @@ import {
   FaPhoneAlt,
   FaTwitterSquare,
   FaYoutubeSquare,
+  FaFacebookF,
 } from "react-icons/fa";
+
+import { FiYoutube } from "react-icons/fi";
+
 import { MdEmail } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 
@@ -40,11 +44,11 @@ const Footer = () => {
             of Tamil Poets and Carnatic Music Composers..
           </p>
           <div className="flex gap-3 ">
-           <a href="https://www.facebook.com/people/Tamil-Cultural-Academy/100078538407715/?locale=hi_IN" target="_blank" className="social-media"> <FaFacebookSquare size={30} color="blue" /> </a>
-            {/* <FaInstagram size={30} /> */}
+           <a href="https://www.facebook.com/people/Tamil-Cultural-Academy/100078538407715/?locale=hi_IN" target="_blank" className="social-media facebook"> <FaFacebookF size={30} color="blue" /> </a>
+            <a href="https://www.instagram.com/tamilculturalacademy/?igsh=czVqa2tpZ24xdTli" target="_blank"><FaInstagram size={30} color="#b8098f"/></a>
             {/* <FaTwitterSquare size={30} /> */}
             {/* <FaGithubSquare size={30} /> */}
-           <a href="https://www.youtube.com/channel/UCCi2Ud8YLOYOzdib9tVHEZg" target="_blank" className="social-media" > <FaYoutubeSquare size={30} color="red" /> </a>
+           <a href="https://www.youtube.com/channel/UCCi2Ud8YLOYOzdib9tVHEZg" target="_blank" className="social-media youtube" > <FiYoutube size={30} color="red" /> </a>
           </div>
         </div>
         <div className="text-lg">
@@ -70,13 +74,13 @@ const Footer = () => {
             <div>
               <p className="flex gap-2 items-center text-[#FFF] my-1 ">
                 <span>
-                  <FaPhoneAlt size={20} color="orange" />
+                  <FaPhoneAlt size={20} color="white" />
                 </span>{" "}
                 +914442160390
               </p>
               <p className="flex gap-2 items-center text-[#FFF] my-1">
                 <span>
-                  <FaPhoneAlt size={20} color="orange" />
+                  <FaPhoneAlt size={20} color="white" />
                 </span>{" "}
                 +919840239597
               </p>
@@ -85,7 +89,7 @@ const Footer = () => {
             <div>
               <p className="flex gap-2 items-center text-[#FFF]  my-1 alegreya-class">
                 <span>
-                  <MdEmail size={20} color="blue" />
+                  <MdEmail size={20} color="red"  />
                 </span>{" "}
                 tamilculturalacademy@gmail.com</p>
             </div>
@@ -95,10 +99,10 @@ const Footer = () => {
             <h6 className="font-medium text-xl footer-shadow text-[red]">Resources Link</h6>
             <ul>
               <li className="py-2 text-lg cursor-pointer text-[#FFF] ft-navigation alegreya-class" onClick={() => nav('/about-us')}>About Us</li>
-              <li className="py-2 text-lg cursor-pointer text-[#FFF] ft-navigation alegreya-class" onClick={() => nav('')}>Photos</li>
-              <li className="py-2 text-lg cursor-pointer text-[#FFF] ft-navigation alegreya-class" onClick={() => nav('')}>Videos</li>
+              <li className="py-2 text-lg cursor-pointer text-[#FFF] ft-navigation alegreya-class" onClick={() => nav('/photos')}>Photos</li>
+              <li className="py-2 text-lg cursor-pointer text-[#FFF] ft-navigation alegreya-class" onClick={() => nav('/videos')}>Videos</li>
               <li className="py-2 text-lg cursor-pointer text-[#FFF] ft-navigation alegreya-class" onClick={() => nav('/contact-us')}>Contact us</li>
-              <li className="py-2 text-lg cursor-pointer text-[#FFF] ft-navigation alegreya-class" onClick={() => nav('')}>Nomination</li>
+              <li className="py-2 text-lg cursor-pointer text-[#FFF] ft-navigation alegreya-class" onClick={() => nav('/nomination')}>Nomination</li>
             </ul>
           </div>
 

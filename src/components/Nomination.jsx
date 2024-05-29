@@ -1,9 +1,12 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import '../css/Nomination.css'
 import { HiCursorClick } from "react-icons/hi";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 const Nomination = () => {
+    useEffect(() => {
+        window.scrollTo(0, 0);
+      }, [])
     const handleClick = () => {
         toast.success('Form Submitted Successfully !')
     }

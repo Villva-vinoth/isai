@@ -24,6 +24,7 @@
 .footer-shadow{
     text-shadow: 2px 3px 5px black;
 }
+
 .social-media:hover{
     transform: scale(1.3);
 }

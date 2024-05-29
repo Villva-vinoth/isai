@@ -50,6 +50,7 @@ import image49 from '../assets/ki/49.jpg'
 import image50 from '../assets/ki/50.jpg'
 
 
+
 let Kodai_s1 = [
     
     {
@@ -254,10 +255,8 @@ let Kodai_s1 = [
         id:50,
         img:image50
     },
-    
-   
 ]
 
 
 
-export default Kodai_s1 
+export default Kodai_s1;

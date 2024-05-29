@@ -16,36 +16,50 @@ function Gallery({ imageData, title, value, seasons, visible }) {
 
   const [datas, setDatas] = useState([]);
 
-  const [refresh, setRefresh] = useState(true)
+  const [refresh, setRefresh] = useState(false)
 
   const [season, setSeason] = useState([]);
 
   useEffect(
     () => {
-      if (select)
-        setDatas(imageData)
+      if (select) { setDatas(imageData) }
+
     }, [refresh]
   )
 
+ 
+
   useEffect(
     () => {
-      setSeason(seasons)
-    }, []
+      if (select) { setSeason(seasons) }
+    }, [refresh]
   )
 
-  const [select, setSelect] = useState(2017)
+  useEffect(()=>{
+    setDatas(imageData)
+    setSelect(window.location.pathname.split('/')[1])
+    window.scrollTo(0, 0);
+  },[window.location.pathname])
+  
+
+
+  const [select, setSelect] = useState(window.location.pathname.split('/')[1])
+
+  console.log(seasons)
+
+
 
   const handleClick = (index) => {
 
-
+    setRefresh(true)
+    setSelect(index)
+    // setSelect1(index)
+    console.log(index)
+    nav(`/${index}`)
+    setTimeout(() => {
       setRefresh(false)
-      setSelect(index)
-      console.log(index)
-      nav(`/${index}`)
-      setTimeout(() => {
-        setRefresh(true)
-      }, 200)
-   
+    }, 200)
+
   }
 
 
@@ -110,6 +124,8 @@ function Gallery({ imageData, title, value, seasons, visible }) {
 
   }
 
+  console.log(season)
+
   return (
     <>
 
@@ -124,10 +140,10 @@ function Gallery({ imageData, title, value, seasons, visible }) {
 
           <div className={navigation ? "lg:basis-1/12 basis-1 lg:hidden md:hidden mt-2" : "basis-0 hidden"}>
             {
-              season && season.map((item, index) => {
+              seasons && seasons.map((item, index) => {
                 return (
                   <div className="sub-menu flex items-center justify-center hover:text-[#e736e7] hover:scale-125 " key={index}>
-                    <div className={select == item ? 'lg:text-5xl text-lg md:text-3xl text-[#a52a2a] alegreya-class p-2' : "lg:text-2xl md:text-xl text-sm"} onClick={() => { handleClick(item); handleNav() }}>{item}</div>
+                    <div className={ select === item ? 'lg:text-5xl text-lg md:text-3xl text-[#a52a2a] alegreya-class p-2' : "lg:text-2xl md:text-xl text-sm"} onClick={() => { handleClick(item); handleNav() }}>{item}</div>
                   </div>
                 )
               })
@@ -136,10 +152,10 @@ function Gallery({ imageData, title, value, seasons, visible }) {
 
           <div className="lg:flex md:flex hidden md:flex-col lg:flex-col mt-2">
             {
-              season && season.map((item, index) => {
+              seasons && seasons.map((item, index) => {
                 return (
-                  <div className="sub-menu flex items-center justify-center hover:text-[#e736e7] hover:scale-125 " key={index}>
-                    <div className={select == item ? 'lg:text-3xl text-lg text-[#a52a2a] md:text-3xl alegreya-class p-2' : "lg:text-xl md:text-xl text-sm"} onClick={() => { handleClick(item); }}>{item}</div>
+                  <div className="sub-menu flex items-center justify-center hover:text-[#e736e7] hover:scale-110 " key={index}>
+                    <div className={ select === item ? 'lg:text-3xl text-lg text-[#a52a2a] md:text-2xl alegreya-class p-2' : "lg:text-xl md:text-xl text-sm"} onClick={() => { handleClick(item); }}>{item}</div>
                   </div>
                 )
               })
@@ -148,7 +164,7 @@ function Gallery({ imageData, title, value, seasons, visible }) {
 
         </div>
 
-        <div className="lg:basis-11/12 basis container-div">
+        <div className="lg:basis-11/12 mx-auto basis container-div">
           <h1 className="text-center text-3xl font-bold alegreya-class text-[#0C0C0C] g-high-light">{title}</h1>
 
           <div className=" columns-1  lg:p-4 p-1">
@@ -163,7 +179,7 @@ function Gallery({ imageData, title, value, seasons, visible }) {
             })}
           </div>
 
-          <div className={value === 4 ? "lg:columns-4 md:columns-2 columns-1 lg:w-[95%] w-[100%] lg:mx-auto mx-auto my-0  lg:gap-1 gap-0 " : "lg:columns-3 md:columns-2 columns-1 lg:w-[95%] w-[100%] lg:mx-auto mx-auto my-0  lg:gap-1 gap-0 "}>
+          <div className={value === 4 ? "lg:columns-4 md:columns-2 columns-1 lg:w-[95%] w-[100%] lg:mx-auto mx-auto my-0  lg:gap-1 gap-0 " : "lg:columns-3 md:columns-2 columns-1 lg:w-[90%] w-[100%] lg:mx-auto mx-auto my-0 lg:gap-1 gap-0 "}>
             {datas.map((item, index) => {
               return (
                 <div className="cursor-pointer lg:w-[100%] mx-auto lg:p-1 md:p-1 p-2 image-div" key={index} onClick={() => handleImageClick2(item)}>
@@ -187,7 +203,7 @@ function Gallery({ imageData, title, value, seasons, visible }) {
           <IoIosCloseCircle color="red" /></span>
         <div className="flex w-full click-to-view-main-containter">
           <div onClick={() => { handlePrev(image) }}><FcPrevious size={30} /></div>
-          <img src={image.img} alt="text" className="lg:w-[800px] md:w-[700px] w-[250px] image-rounded" />
+          <img src={image.img} alt="text" className=" image-rounded" />
           <span onClick={() => { handleNext(image) }}><FcNext size={30} /></span>
 
         </div>

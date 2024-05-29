@@ -5,6 +5,11 @@ import supporter from '../datas/supporter';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 const Sliders = () => {
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+      }, [])
+      
     const [support, setSupport] = useState([]);
 
     useEffect(() => {

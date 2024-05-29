@@ -16,9 +16,15 @@ import y_2022 from './datas/2022'
 import video from './datas/video'
 import kodai_seasons from './datas/kodaiSeasons';
 import Kodai_s1 from './datas/kodai-s1'
+import Kodai_s2 from './datas/kodai-s2'
+import Kodai_s3 from './datas/kodai-s3'
+import Kodai_s4 from './datas/kodai-s4'
+import Kodai_s5 from './datas/kodai-s5'
+import photo from './datas/photo'
+import awards from './datas/awards'
 
 import Contact from './components/Contact';
-import Video from './components/Video';
+import VideoPlayer from './components/Video';
 import Nomination from './components/Nomination';
 
 
@@ -68,12 +74,14 @@ function App() {
           <Route path='/2021' element={<Gallery imageData={y_2021} title={'2021 ( season 5 )'} seasons={seasons} value={4} />} />
           <Route path='/2022' element={<Gallery imageData={y_2022} title={'2022 ( season 6 )'} seasons={seasons} value={4} />} />
           <Route path='/kodai-S1' element={<Gallery imageData={Kodai_s1} title={'Kodai ( season 1)'} seasons={kodai_seasons} value={3} />} />
-          <Route path='/kodai-S2' element={<Gallery imageData={y_2022} title={'Kodai ( season 2)'} seasons={kodai_seasons} value={3} />} />
-          <Route path='/kodai-S3' element={<Gallery imageData={y_2022} title={'Kodai ( season 3)'} seasons={kodai_seasons} value={3} />} />
-          <Route path='/kodai-S4' element={<Gallery imageData={y_2021} title={'Kodai ( season 4)'} seasons={kodai_seasons} value={3} />} />
-          <Route path='/kodai-S5' element={<Gallery imageData={y_2022} title={'Kodai ( season 5)'} seasons={kodai_seasons} value={3} />} />
+          <Route path='/kodai-S2' element={<Gallery imageData={Kodai_s2} title={'Kodai ( season 2)'} seasons={kodai_seasons} value={3} />} />
+          <Route path='/kodai-S3' element={<Gallery imageData={Kodai_s3} title={'Kodai ( season 3)'} seasons={kodai_seasons} value={3} />} />
+          <Route path='/kodai-S4' element={<Gallery imageData={Kodai_s4} title={'Kodai ( season 4)'} seasons={kodai_seasons} value={3} />} />
+          <Route path='/kodai-S5' element={<Gallery imageData={Kodai_s5} title={'Kodai ( season 5)'} seasons={kodai_seasons} value={3} />} />
+          <Route path='/photos' element ={<Gallery imageData={photo} title={'photo'} seasons={seasons} value={3} />}  />
+          <Route path='/awards' element ={<Gallery imageData={awards} title={'Awards'}  value={3} />}  />
 
-          {/* <Route path='/video' element={<Video videoData={video}/>} /> */}
+          <Route path='/videos' element={<VideoPlayer videoData={video}/>} />
           <Route path='/nomination' element={<Nomination />} />
 
           <Route path='/contact-us' element={<Contact />} />
