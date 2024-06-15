@@ -1,52 +1,85 @@
-import React, { useState } from 'react';
-import { AiOutlineClose, AiOutlineMenu } from 'react-icons/ai';
-import '../css/Navbar.css'
+import React, { useState } from 'react'
+import { RiMenuFill, RiMenu4Fill } from "react-icons/ri";
 import logo1 from '../assets/home/logo.png'
-import { useNavigate } from 'react-router-dom';
-const Navbar = () => {
+import '../css/Navbar.css'
+import { RiArrowUpSLine } from "react-icons/ri";
+import { MdKeyboardArrowDown } from "react-icons/md";
+import { AiFillHome } from "react-icons/ai";
+import { BsFillInfoCircleFill } from "react-icons/bs";
 
-
-  const [navi, setNavi] = useState(false);
-
-  const [navigation,setNavigation] = useState(0)
+const Navbar = ({ isHam, setIsHam }) => {
+  // const [ham,setHam] = useState()
+  // const [isHam, setIsHam] = useState(true)
 
   const handleNav = () => {
-    setNavi(!navi);
+    setIsHam(!isHam);
   };
-
-  const nav = useNavigate()
-
+  const [eventSubMenu, setEventSubMenu] = useState(false)
   return (
-    <div className='flex justify-between items-center h-24 w-[full] mx-auto px-4 text-[#000] lg:text-lg md:text-sm font-bold'>
+    <div className='navigation-cont h-[100%]'>
+      <section className='w-[100%]'>
+        <div className='p-0' onClick={() => { setIsHam(!isHam) }}>{isHam == false ? <RiMenuFill size={40} /> : <RiMenu4Fill size={40} />}</div>
+      </section>
+      <section className={isHam ? 'w-[100%] h-[100%] flex flex-col bg-transparent ease-in-out duration-500 index' : 'ease-in-out duration-10 fixed left-[-100%]'}>
+        <ul >
+          <img src={logo1} alt='' className='w-50 h-20 m-10' />
+          <li className='p-3  cursor-pointer flex gap-5 items-center' onClick={() => {
+            //  handleNav(); 
+            //  nav('/')
+          }}><span className=''><AiFillHome /></span>Home</li>
+          <li className='p-3  cursor-pointer flex gap-5 items-center' onClick={() => {
+            //  handleNav();
+            // nav('') 
+          }}><span><BsFillInfoCircleFill /></span>About Us</li>
+          <li className='p-3  cursor-pointer flex gap-5 items-center  ' onClick={() => {
+            // handleNav();
+            //  nav('/2017')
+            setEventSubMenu(!eventSubMenu)
+          }}>EVENTS
+            {
+              eventSubMenu == true ? (
+                <span> <RiArrowUpSLine /></span>
+              ) : (
+                <span> <MdKeyboardArrowDown /></span>
+              )
+            }
+          </li>
+          {
+            eventSubMenu && (<ul className='pt-1 px-4'>
+              <li className='p-1 flex gap-5 items-center'>Kodai isai</li>
+              <li className='p-1 flex gap-5 items-center'>Mega isai</li>
+            </ul>)
+          }
 
-      <img src={logo1} alt='' className='lg:w-50 lg:h-20 lg:m-10 w-30 h-16 mt-1 m-0' />
-      <ul className='hidden md:flex gap-5'>
-        <li className= {window.location.pathname== '/' ?'p-3 cursor-pointer navigation navi' :'p-3 navigation cursor-pointer'} onClick={()=>{setNavigation(0);nav('/')}}>HOME</li>
-        <li className= {window.location.pathname== '' ?'p-3 cursor-pointer navigation navi' :'p-3 navigation cursor-pointer'} onClick={()=>setNavigation(1)}>INTERNATIONAL BRANCHES</li>
-        <li className= {window.location.pathname== '/2017' || window.location.pathname== '/2018' || window.location.pathname== '/2019' || window.location.pathname== '/2020' || window.location.pathname== '/2021' || window.location.pathname== '/2022' ?'p-3 cursor-pointer navigation navi' :'p-3 navigation cursor-pointer'} onClick={()=>{setNavigation(7);nav('/2017')}}>EVENTS</li>
-        <li className= {window.location.pathname== '' ?'p-3 cursor-pointer navigation navi' :'p-3 navigation cursor-pointer'} onClick={()=>{setNavigation(3);nav('/kodai-s1')}}>KODAI ISAI</li>
-        <li className= {window.location.pathname== '' ?'p-3 cursor-pointer navigation navi' :'p-3 navigation cursor-pointer'} onClick={()=>{setNavigation(4);nav('/awards')}}>AWARDS</li>
-        <li className= {window.location.pathname== '/about-us' ?'p-3 cursor-pointer navigation navi' :'p-3 navigation cursor-pointer'} onClick={()=>{setNavigation(5);nav('/about-us')}}>ABOUT</li>
-        <li className= {window.location.pathname== '/contact-us' ?'p-3 cursor-pointer navigation navi' :'p-3 navigation cursor-pointer'} onClick={()=>{setNavigation(6);nav('/contact-us')}}>CONTACT</li>
-      </ul>
-      <div className='relative'>
-      <div onClick={handleNav} className='block md:hidden '>
-          {navi ? <AiOutlineClose size={30}/> : <AiOutlineMenu size={30} />}
-      </div>
-      <ul className={navi ? 'fixed left-0 top-0 w-[80%] h-[100%] border-r border-r-gray-900 bg-[white] ease-in-out duration-500 index' : 'ease-in-out duration-10 fixed left-[-100%]'}>
-      <img src={logo1} alt='' className='w-50 h-20 m-10'  />
-          <li className='p-4 border-b border-gray-600 cursor-pointer'  onClick={()=>{handleNav();nav('/')}}>Home</li>
-          <li className='p-4 border-b border-gray-600 cursor-pointer'  onClick={()=>{handleNav();nav('')}}>INTERNATIONAL BRANCHES</li>
-          <li className='p-4 border-b border-gray-600 cursor-pointer'  onClick={()=>{handleNav();nav('/2017')}}>EVENTS</li>
-          <li className='p-4 border-b border-gray-600 cursor-pointer'  onClick={()=>{handleNav();nav('/kodai-s1')}}>KODAI ISAI</li>
           {/* <li className='p-4 border-b border-gray-600 cursor-pointer'  onClick={()=>{setNavigation(0);nav('/')}}>SUPPORTERS</li> */}
-          <li className='p-4 border-b border-gray-600 cursor-pointer'  onClick={()=>{handleNav();nav('/awards')}}>AWARDS</li>
-          <li className='p-4 border-b border-gray-600 cursor-pointer'  onClick={()=>{handleNav();nav('/about-us')}}>ABOUT</li>
-          <li className='p-4 cursor-pointer'  onClick={()=>{handleNav();nav('/contact-us')}}>CONTACT</li>
-      </ul>
-      </div>
-    </div>
-  );
-};
+          <li className='p-3 cursor-pointer flex gap-5 items-center' onClick={() => {
+            // handleNav(); 
+            //  nav('/awards')
+          }}>AWARDS</li>
+          <li className='p-3  cursor-pointer flex gap-5 items-center' onClick={() => {
+            //  handleNav();
+            // nav('/about-us') 
+          }}>International Branches</li>  
+          <li className='p-3 cursor-pointer flex gap-5 items-center' onClick={() => {
+            //  handleNav();
+            //  nav('/contact-us')
+          }}>CONTACT</li>
 
-export default Navbar;
+        </ul>
+        <footer className='social-media-nav p-1 flex flex-col p-3'>
+          <h3>Social media</h3>
+          <ul className='flex gap-2 p-1'>
+            <li> you</li>
+            <li>face</li>
+            <li>what</li>
+            <li>insta</li>
+          </ul>
+        </footer>
+
+      </section>
+
+    </div>
+  )
+}
+
+export default Navbar

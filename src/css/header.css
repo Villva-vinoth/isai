@@ -1,0 +1,47 @@
+.header-main-div{
+    position:fixed;
+    width: 100%;
+    height: 10vh;
+    z-index: 999;
+}
+.toggle-container {
+    /* position: fixed; */
+    top: 0;
+    right: 0;
+    padding: 1%;
+}
+
+#switch {
+    opacity: 0;
+    /* position: absolute; */
+}
+
+.toggle-label {
+    background-color: #ccc;
+    border-radius: 50px;
+    cursor: pointer;
+    display: inline-block;
+    height: 26px;
+    position: relative;
+    width: 50px;
+}
+
+.toggle-label::after {
+    background-color: #fff;
+    border-radius: 50%;
+    content: "";
+    height: 22px;
+    left: 2px;
+    position: absolute;
+    top: 2px;
+    transition: 0.3s;
+    width: 22px;
+}
+
+#switch:checked + .toggle-label {
+    background-color: #4caf50;
+}
+
+#switch:checked + .toggle-label::after {
+    transform: translateX(24px);
+}

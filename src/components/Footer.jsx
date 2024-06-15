@@ -1,20 +1,16 @@
 import React from "react";
-import {
-  FaAddressCard,
-  FaDribbbleSquare,
-  FaFacebookSquare,
-  FaGithubSquare,
-  FaInstagram,
-  FaPhoneAlt,
-  FaTwitterSquare,
-  FaYoutubeSquare,
-  FaFacebookF,
-} from "react-icons/fa";
+import { FaPhoneAlt } from "react-icons/fa";
+
+
+import { MdOutlineShareLocation } from "react-icons/md";
+
 
 import { FiYoutube } from "react-icons/fi";
 
-import { MdEmail } from "react-icons/md";
+import { MdLocationOn, MdPhone, MdEmail } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
+import '../css/footer.css'
+import logo from '../assets/home/logo.png'
 
 
 const Footer = () => {
@@ -24,110 +20,70 @@ const Footer = () => {
 
 
   return (
-    <div>
-      <div className="w-[100%] footer-main-container mx-auto py-5 px-4 grid lg:grid-cols-3 md:grid-cols-3 lg:gap-8 md:gap-8 lg:justify-items-center md:justify-items-center text-gray-300">
-        <div className="">
-          <div className="flex gap-2 items-center">
-            <img
-              src="https://tamilcultural.org/img/core-img/logo.png"
-              alt=""
-              className="w-20 h-20"
-            />
-            <p className="py-4 text-[red] text-xl footer-shadow m-0 p-0">
+    <footer className="w-[100%]">
+      <section className="footer-section-one">
+
+
+        <div className="footer-section-one-first">
+          <img
+            src={logo}
+            alt=""
+            // className="w-20 h-20"
+          />
+          <div className="footer-sub-first">
+            <p className=" text-[red] xl:text-xl sm:text-lg footer-shadow m-0 p-0">
               <span className="font-bold alegreya-class">T</span>amil{" "}
               <span className="font-bold alegreya-class">C</span>ultural{" "}
               <span className="font-bold alegreya-class">A</span>cademy
             </p>
-          </div>
-          <p className="py-4 text-[white] text-lg  m-0 p-0 alegreya-class">
-            Mega Isai Vizha is a unique name with intent of recognizing the number
-            of Tamil Poets and Carnatic Music Composers..
-          </p>
-          <div className="flex gap-3 ">
-           <a href="https://www.facebook.com/people/Tamil-Cultural-Academy/100078538407715/?locale=hi_IN" target="_blank" className="social-media facebook"> <FaFacebookF size={30} color="blue" /> </a>
-            <a href="https://www.instagram.com/tamilculturalacademy/?igsh=czVqa2tpZ24xdTli" target="_blank"><FaInstagram size={30} color="#b8098f"/></a>
-            {/* <FaTwitterSquare size={30} /> */}
-            {/* <FaGithubSquare size={30} /> */}
-           <a href="https://www.youtube.com/channel/UCCi2Ud8YLOYOzdib9tVHEZg" target="_blank" className="social-media youtube" > <FiYoutube size={30} color="red" /> </a>
+            <p className="text-[white] xl:text-lg sm:text-sm  m-0 p-1 alegreya-class">
+              Mega Isai Vizha is a unique name with intent of recognizing the number
+              of Tamil Poets and Carnatic Music Composers..
+            </p>
           </div>
         </div>
-        <div className="text-lg">
-            <h6 className="font-medium text-[red] my-3 footer-shadow ">Address</h6>
-            <div>
-              <p className="flex gap-2 text-[#FFF] my-1 alegreya-class">
-                <span>
-                  <FaAddressCard size={20} color="red"  />
-                </span>{" "}
-                136,2nd Floor , Linghi Chetty Street, Chennai-600001
-              </p>
-              <p className="flex gap-2 text-[#FFF] my-1 alegreya-class">
-                <span>
-                  <FaAddressCard size={20} color="red" />
-                </span>{" "}
-                Malhotra House, New No : 294, Suite No.1 B, 1st Floor,
-                Opp. Dhanalakshmi Bank, Thambu Chetty Street, Chennai - 600
-                001.
-              </p>
-            </div>
 
-            <h6 className="font-medium text-[red] footer-shadow my-2 ">Phone</h6>
-            <div>
-              <p className="flex gap-2 items-center text-[#FFF] my-1 ">
-                <span>
-                  <FaPhoneAlt size={20} color="white" />
-                </span>{" "}
-                +914442160390
-              </p>
-              <p className="flex gap-2 items-center text-[#FFF] my-1">
-                <span>
-                  <FaPhoneAlt size={20} color="white" />
-                </span>{" "}
-                +919840239597
-              </p>
-            </div>
-            <h6 className="font-medium text-[red] footer-shadow my-2 ">Email</h6>
-            <div>
-              <p className="flex gap-2 items-center text-[#FFF]  my-1 alegreya-class">
-                <span>
-                  <MdEmail size={20} color="red"  />
-                </span>{" "}
-                tamilculturalacademy@gmail.com</p>
-            </div>
-          </div>
+        <div className="footer-section-two-second">
+          <h3 className="address-footer"><span className="circle-footer"><MdLocationOn size={15} /></span>Address</h3>
+          <ul>
+            <li>136,2nd Floor , Linghi Chetty Street, Chennai-600001</li>
+            <li>Malhotra House, New No : 294, Suite No.1 B, 1st Floor,
+              Opp. Dhanalakshmi Bank, Thambu Chetty Street, Chennai - 600 001.</li>
+          </ul>
+        </div>
 
-          <div className="mt-2">
-            <h6 className="font-medium text-xl footer-shadow text-[red]">Resources Link</h6>
-            <ul>
-              <li className="py-2 text-lg cursor-pointer text-[#FFF] ft-navigation alegreya-class" onClick={() => nav('/about-us')}>About Us</li>
-              <li className="py-2 text-lg cursor-pointer text-[#FFF] ft-navigation alegreya-class" onClick={() => nav('/photos')}>Photos</li>
-              <li className="py-2 text-lg cursor-pointer text-[#FFF] ft-navigation alegreya-class" onClick={() => nav('/videos')}>Videos</li>
-              <li className="py-2 text-lg cursor-pointer text-[#FFF] ft-navigation alegreya-class" onClick={() => nav('/contact-us')}>Contact us</li>
-              <li className="py-2 text-lg cursor-pointer text-[#FFF] ft-navigation alegreya-class" onClick={() => nav('/nomination')}>Nomination</li>
-            </ul>
-          </div>
+        <div className="footer-section-three-third">
+          <h3 className="contact-footer"><span className="circle-footer"><MdPhone size={15} /></span>Contact</h3>
+          <ul>
+            <li>+91 - 4442 160 390</li>
+            <li>+91 - 9840 239 597</li>
+          </ul>
+        </div>
 
-        {/* lg:col-span-2 md:row-span-3 flex lg:justify-between lg:flex-row flex-col lg:mt-6 mt-2 */}
-        {/* <div className="grid grid-cols-2" >
-         
-          
-        </div> */}
-      
-      </div>
-      <div className="text-center p-4 my-1">
-        Copyright ©️ 2024 
+        <div className="footer-section-four-fourth">
+          <h3 className="email-footer"><span className="circle-footer"><MdEmail size={15} /></span>Email</h3>
+          <ul>
+            <li>tamilculturalacademy@gmail.com</li>
+            {/* <li>+91 - 9840 239 597</li> */}
+          </ul>
+        </div>
+
+      </section>
+      <section className="text-center p-4 footer-section-2 text-[white]">
+        Copyright ©️ 2024
         <span className="alegreya-class text-[red]">
           &nbsp; Tamil Cultural Acedamy&nbsp;
         </span>
         |
-        powered By 
-        <span className="alegreya-class hover:text-[green] text-[blue]" >
+        powered By
+        <span className="alegreya-class hover:text-[red] text-[white] underline" >
           &nbsp;
           <a href="https://rakumuraitsolutions.com/" target="_blank" rel="noopener noreferrer" >
-            Rakumara IT Solutions 
-            </a> &nbsp;
-          </span>
-      </div>
-    </div>
+            Rakumara IT Solutions
+          </a> &nbsp;
+        </span>
+      </section>
+    </footer>
   );
 };
 

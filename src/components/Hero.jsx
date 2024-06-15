@@ -9,9 +9,8 @@ const Hero = () => {
   }, [])
   return (
     <>
-    <div className="text-white w-full flex items-center justify-center main-container">
+    <div className="text-white w-[100%] flex items-center justify-center main-container">
       <img src={post1} alt="text" width={'90%'} className="div-image shadow-home"/>
-
     </div>
     <Sliders />
     </>
