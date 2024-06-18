@@ -24,20 +24,20 @@ const Sliders = () => {
                 style={{
                     cursor: 'pointer',
                     boxShadow: "0 2px 5px rgb(207, 207, 207)",
-                    backgroundColor: "red",
-                    borderRadius:"10px",
-                    width: "35px",
-                    height:"35px",
+                    backgroundColor: "grey",
+                    // borderRadius:"10px",
+                    width: "20px",
+                    height:"40px",
                     fontSize:"20px",
                     textAlign: "center",
                     position: "absolute",
-                    top: "40%",
+                    top: "30%",
                     zIndex: "9",
                     left: "10px",
                     ...style
                 }}
                 {...props}
-                className={`award-prev `}
+                className={`award-nav `}
                 aria-hidden="true"
             >
                 {'<'}
@@ -52,20 +52,20 @@ const Sliders = () => {
                 style={{
                     cursor: 'pointer',
                     boxShadow: "0 2px 5px rgb(207, 207, 207)",
-                    backgroundColor: "red",
-                    borderRadius:"10px",
-                    width: "35px",
-                    height:"35px",
+                    backgroundColor: "grey",
+                    // borderRadius:"10px",
+                    width: "20px",
+                    height:"40px",
                     textAlign: "center",
                     fontSize:"20px",
                     position: "absolute",
-                    top: "40%",
+                    top: "30%",
                     right: "10px",
                     zIndex: "99",
                     ...style
                 }}
                 {...props}
-                className={`award-next`}
+                className={`award-nav`}
                 aria-hidden="true"
             >
                 {'>'}
@@ -79,7 +79,7 @@ const Sliders = () => {
         autoplay: true,
         autoplaySpeed: 1000,
         speed: 1000,
-        slidesToShow: 6,
+        slidesToShow: 5,
         slidesToScroll: 1,
         prevArrow: <PrevButton />,
         nextArrow: <NextButton />,
@@ -100,8 +100,8 @@ const Sliders = () => {
     };
 
     return (
-        <div className='my-5'>
-            <h1 className='lg:text-5xl md:text-3xl text-lg alegreya-class text-[#000] font-bold text-center mt-1'>Supporters</h1>
+        <div className='my-1 slider-main-continer'>
+            <h1 className='lg:text-2xl md:text-2xl text-lg font-bold mt-1'>Supporters</h1>
             <Slider {...settings}>
                 {support.map((item, index) => {
                     return (

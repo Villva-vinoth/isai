@@ -7,6 +7,7 @@ import { FaHandPointDown, FaDoorClosed } from "react-icons/fa";
 import { IoIosCloseCircle } from "react-icons/io";
 import { FcNext } from "react-icons/fc";
 import { FcPrevious } from "react-icons/fc";
+import Loading from "./Loader";
 
 
 function Gallery({ imageData, title, value, seasons, visible }) {
@@ -27,7 +28,7 @@ function Gallery({ imageData, title, value, seasons, visible }) {
     }, [refresh]
   )
 
- 
+
 
   useEffect(
     () => {
@@ -35,12 +36,12 @@ function Gallery({ imageData, title, value, seasons, visible }) {
     }, [refresh]
   )
 
-  useEffect(()=>{
+  useEffect(() => {
     setDatas(imageData)
     setSelect(window.location.pathname.split('/')[1])
     window.scrollTo(0, 0);
-  },[window.location.pathname])
-  
+  }, [window.location.pathname])
+
 
 
   const [select, setSelect] = useState(window.location.pathname.split('/')[1])
@@ -126,14 +127,23 @@ function Gallery({ imageData, title, value, seasons, visible }) {
 
   console.log(season)
 
+
+  const [refreshState, setRefreshState] = useState(false)
+
+  useEffect(() => {
+    setRefreshState(true)
+    setTimeout(() => {
+      setRefreshState(false)
+    }, 2000)
+  }, [window.location.pathname])
+
   return (
     <>
 
-      <div className=" w-[100%] mx-auto image-main-div flex ">
+      <div className=" w-[100%] mx-auto image-main-div flex flex-col">
 
-
-
-        <div onClick={handleNav} className='block lg:hidden md:hidden absolute icon-class'>
+        
+        {/* <div onClick={handleNav} className='block lg:hidden md:hidden absolute icon-class'>
           {navigation ? <IoIosCloseCircle size={25} /> : <FaHandPointDown size={25} />}
         </div>
         <div className="flex flex-col items-center my-5 mx-0 mx-auto sub-container">
@@ -148,84 +158,96 @@ function Gallery({ imageData, title, value, seasons, visible }) {
                 )
               })
             }
-          </div>
-
-          <div className="lg:flex md:flex hidden md:flex-col lg:flex-col mt-2">
+          </div> */}
             {
-              seasons && seasons.map((item, index) => {
-                return (
-                  <div className="sub-menu flex items-center justify-center hover:text-[#e736e7] hover:scale-110 " key={index}>
-                    <div className={ select === item ? 'lg:text-3xl text-lg text-[#a52a2a] md:text-2xl alegreya-class p-2' : "lg:text-xl md:text-xl text-sm"} onClick={() => { handleClick(item); }}>{item}</div>
+              seasons && (
+                <div className="p-1 flex gap-10 mx-4">
+                  <div>
+                    <label>season :</label>
+                    <select onChange={(e)=>handleClick(e.target.value)} className="p-0 mx-1">
+                      {
+                         seasons.map((item,index)=>{
+                          return(
+                          <option key={index} value={item}>{item}</option>
+                        )
+                        })
+                      }
+                    </select>
                   </div>
-                )
-              })
-            }
-          </div>
-
-        </div>
-
-        <div className="lg:basis-11/12 mx-auto basis container-div">
-          <h1 className="text-center text-3xl font-bold alegreya-class text-[#0C0C0C] g-high-light">{title}</h1>
-
-          <div className=" columns-1  lg:p-4 p-1">
-            {datas && datas.map((item) => {
-              return item.cover && item.cover.map((itm, index) => {
-                return (
-                  <div className="cursor-pointer lg:w-[100%] mx-auto lg:p-5 md:p-2 p-2 image-div " key={index} onClick={() => { handleImageClick(itm) }}>
-                    <img src={itm.img} alt="text" className="lg:w-[100%]" />
-                  </div>
-                )
-              })
-            })}
-          </div>
-
-          <div className={value === 4 ? "lg:columns-4 md:columns-2 columns-1 lg:w-[95%] w-[100%] lg:mx-auto mx-auto my-0  lg:gap-1 gap-0 " : "lg:columns-3 md:columns-2 columns-1 lg:w-[90%] w-[100%] lg:mx-auto mx-auto my-0 lg:gap-1 gap-0 "}>
-            {datas.map((item, index) => {
-              return (
-                <div className="cursor-pointer lg:w-[100%] mx-auto lg:p-1 md:p-1 p-2 image-div" key={index} onClick={() => handleImageClick2(item)}>
-                  {
-                    item.img && <img src={item.img} alt="text" className="lg:w-[100%] " />
-                  }
-
+                  <div className="cursor-pointer" onClick={()=>nav('/photos')}>photos</div>
+                  <div className="cursor-pointer"  onClick={()=>nav('/videos')}>Videos</div>
                 </div>
-              );
-            })}
+              ) 
+            }
+
+
+
+        {
+          refreshState == true ? (<Loading />):(
+            <div className="lg:basis-11/12 mx-auto basis container-div">
+            <h1 className="text-center text-2xl font-bold alegreya-class text-[red] g-high-light">{title}</h1>
+
+            <div className=" columns-1  lg:p-4 p-1">
+              {datas && datas.map((item) => {
+                return item.cover && item.cover.map((itm, index) => {
+                  return (
+                    <div className="cursor-pointer lg:w-[100%] mx-auto lg:p-5 md:p-2 p-2 image-div " key={index} onClick={() => { handleImageClick(itm) }}>
+                      <img src={itm.img} alt="text" className="lg:w-[100%]" />
+                    </div>
+                  )
+                })
+              })}
+            </div>
+
+            <div className={value === 4 ? "lg:columns-4 md:columns-2 columns-1 lg:w-[95%] w-[100%] lg:mx-auto mx-auto my-0  lg:gap-1 gap-0 " : "lg:columns-3 md:columns-2 columns-1 lg:w-[90%] w-[100%] lg:mx-auto mx-auto my-0 lg:gap-1 gap-0 "}>
+              {datas.map((item, index) => {
+                return (
+                  <div className="cursor-pointer lg:w-[100%] mx-auto lg:p-1 md:p-1 p-2 image-div" key={index} onClick={() => handleImageClick2(item)}>
+                    {
+                      item.img && <img src={item.img} alt="text" className="lg:w-[100%] " />
+                    }
+
+                  </div>
+                );
+              })}
+            </div>
           </div>
-        </div>
+          )
+        }
 
 
-
-      </div>
-
-
-      <div className={isVisible === 0 ? "click-to-view" : "hidden"}>
-        <span className="absolute top-0 right-0 click-to-view-icon lg:text-5xl md:text-5xl text-3xl" onClick={() => setIsvisible(1)}>
-          <IoIosCloseCircle color="red" /></span>
-        <div className="flex w-full click-to-view-main-containter">
-          <div onClick={() => { handlePrev(image) }}><FcPrevious size={30} /></div>
-          <img src={image.img} alt="text" className=" image-rounded" />
-          <span onClick={() => { handleNext(image) }}><FcNext size={30} /></span>
 
         </div>
 
 
-      </div>
+        <div className={isVisible === 0 ? "click-to-view" : "hidden"}>
+          <span className="absolute top-0 right-0 click-to-view-icon lg:text-5xl md:text-5xl text-3xl" onClick={() => setIsvisible(1)}>
+            <IoIosCloseCircle color="red" /></span>
+          <div className="flex w-full click-to-view-main-containter">
+            <div onClick={() => { handlePrev(image) }}><FcPrevious size={30} /></div>
+            <img src={image.img} alt="text" className=" image-rounded" />
+            <span onClick={() => { handleNext(image) }}><FcNext size={30} /></span>
 
-      <div className={isVisible2 === 0 ? "click-to-view" : "hidden"}>
-        <span className="absolute top-0 right-0 click-to-view-icon lg:text-5xl md:text-5xl text-3xl" onClick={() => setIsvisible2(1)}>
-          <IoIosCloseCircle color="red" /></span>
-        <div className="flex w-full click-to-view-main-containter">
-          <div onClick={() => { handlePrev2(image2) }}><FcPrevious size={30} /></div>
-          <img src={image2.img} alt="text" className="lg:w-[800px] md:w-[700px] w-[250px] image-rounded" />
-          <span onClick={() => { handleNext2(image2) }}><FcNext size={30} /></span>
+          </div>
+
 
         </div>
 
+        <div className={isVisible2 === 0 ? "click-to-view" : "hidden"}>
+          <span className="absolute top-0 right-0 click-to-view-icon lg:text-5xl md:text-5xl text-3xl" onClick={() => setIsvisible2(1)}>
+            <IoIosCloseCircle color="red" /></span>
+          <div className="flex w-full click-to-view-main-containter">
+            <div onClick={() => { handlePrev2(image2) }}><FcPrevious size={30} /></div>
+            <img src={image2.img} alt="text" className="lg:w-[800px] md:w-[700px] w-[250px] image-rounded" />
+            <span onClick={() => { handleNext2(image2) }}><FcNext size={30} /></span>
 
-      </div>
+          </div>
 
-    </>
-  );
+
+        </div>
+
+      </>
+      );
 }
 
-export default Gallery;
+      export default Gallery;

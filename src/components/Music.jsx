@@ -1,9 +1,5 @@
 import "../css/music.css";
 import React, { useRef, useState, useEffect } from 'react';
-import albumArt1 from '../assets/music/musicimg1.png';
-import albumArt2 from '../assets/music/musicimg2.png';
-import albumArt3 from "../assets/music/musicimg3.png";
-import audio from "../assets/music/aud2.mp3"
 import { FaRegPlayCircle, FaRegPauseCircle } from "react-icons/fa";
 import { ImPrevious } from "react-icons/im";
 import { CgPlayTrackNextO } from "react-icons/cg";
@@ -11,36 +7,8 @@ import { LuRefreshCw } from "react-icons/lu";
 import { TfiControlShuffle } from "react-icons/tfi";
 import { GiSoundOn, GiSoundOff } from "react-icons/gi";
 import { FaSearch } from "react-icons/fa";
-
 import { FaPlay } from "react-icons/fa";
-
-
-const songs = [
-    {
-        title: 'Song Title 1',
-        artist: 'Artist Name 1',
-        albumArt: albumArt1,
-        year: 2002,
-        audioSrc: audio
-    },
-    {
-        title: 'Song Title 2',
-        artist: 'Artist Name 2',
-        albumArt: albumArt2,
-        year: 2004,
-        audioSrc: audio
-    },
-    {
-        title: 'Song Title 3',
-        artist: 'Artist Name 3',
-        albumArt: albumArt3,
-        year: 2008,
-        audioSrc: audio
-    },
-    
-];
-
-function Music() {
+function Music({songs}) {
     const [currentSongIndex, setCurrentSongIndex] = useState(0);
     const currentSong = songs[currentSongIndex];
 
@@ -110,7 +78,7 @@ function Music() {
         if (currentSongIndex > 0) {
             setCurrentSongIndex(currentSongIndex - 1);
         } else {
-            setCurrentSongIndex(songs.length - 1); // Go to last song if at the beginning
+            setCurrentSongIndex(songs.length - 1);
         }
     };
 
@@ -118,7 +86,7 @@ function Music() {
         if (currentSongIndex < songs.length - 1) {
             setCurrentSongIndex(currentSongIndex + 1);
         } else {
-            setCurrentSongIndex(0); // Go to first song if at the end
+            setCurrentSongIndex(0); 
         }
     };
 
@@ -147,13 +115,15 @@ function Music() {
             <h3 className="p-2 font-bold">MOST POPULAR</h3>
             <div className="music-sub-cont">
                 {songs.map((song, index) => (
-                    <div key={index} className="songs-container" onClick={() => setCurrentSongIndex(index)}>
+                    <div key={index} className="songs-container" onClick={() => {setCurrentSongIndex(index);handleRefresh()}}>
                         <img src={song.albumArt} alt={`${song.title} album art`} />
-                        <div className="music-title-container">
-                            <h3>{song.title}</h3>
-                            <h4>{song.year}</h4>
+                        <div className="music-btn-controls">
+                            <div className="music-title-container">
+                                <h3>{song.title}</h3>
+                                <h4>{song.year}</h4>
+                            </div>
+                            <button><FaPlay /></button>
                         </div>
-                        <button><FaPlay /></button>
                     </div>
                 ))}
             </div>

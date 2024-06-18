@@ -5,14 +5,21 @@
 }
 .nav{
     flex-basis: 15%;
-    width: 100%;
+    width: 20%;
 }
 .rem-nav{
-    flex-basis: 60% !important;
-    width: 60%;
+    flex-basis: 70% !important;
+    /* width: 60%; */
     margin-top: 4.7%;
     /* background-color: red; */
     margin-inline: auto;
+    max-height: 800px;
+    overflow-y: scroll;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+.rem-nav::-webkit-scrollbar{
+    display: none;
 }
 .nav-hide{
     flex-basis: 0%;
@@ -22,4 +29,50 @@
     flex-basis: 20%;
     width: 20%;
     margin-top: 4.7%;
+}
+
+.light{
+    background-color: white !important;
+    color: black !important;
+}
+.dark{
+    background-color: #7b0024 !important;
+    color: white !important;
+}
+
+@media (min-width:768px) and (max-width:1024px) {
+    .rem-nav{
+        margin-top: 7%;
+    }
+    .rem-sub-nav{
+        margin-top: 7%;
+        flex-basis: 25%;
+        width: 25%;
+        
+    }
+}
+
+@media (min-width:320px) and (max-width:767px) {
+    .app-main-cont{
+        flex-direction: column;
+    }
+    .nav{
+        width: 100%;
+        position: fixed;
+        z-index: 999;
+        top: 10px;
+        left: 0;
+        /* max-height: 90%;
+        overflow-x: auto; */
+    }
+    .rem-nav{
+        margin-top: 15%;
+        flex-basis: 90%;
+        width: 90%;
+    }
+    .rem-sub-nav{
+        flex-basis: 90%;
+        width: 90%;
+        margin-inline: auto;
+    }
 }

@@ -3,3 +3,7 @@
     width: 100%;
     /* background-color: red; */
 }
+.active-navbar{
+    color: red;
+    border-right: 2px red solid;
+}

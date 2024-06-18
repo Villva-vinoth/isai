@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Footer from './components/Footer';
 import './App.css'
 
@@ -31,6 +31,14 @@ import Nomination from './components/Nomination';
 import Header from './components/Header';
 import Music from './components/Music';
 
+import albumArt1 from './assets/music/musicimg1.png';
+import albumArt2 from './assets/music/musicimg2.png';
+import albumArt3 from "./assets/music/musicimg3.png";
+import audio from "./assets/music/aud2.mp3"
+import InternationalBranches from './components/InternationalBranches';
+
+
+
 function App() {
 
   const [scrollbtn, setScrollbtn] = useState(false)
@@ -60,50 +68,91 @@ function App() {
     });
   }
 
-  const [isHam, setIsHam] = useState(true)
+  const [isHam, setIsHam] = useState(false)
+
+  const songs = [
+    {
+      title: 'Song Title 1',
+      artist: 'Artist Name 1',
+      albumArt: albumArt1,
+      year: 2002,
+      audioSrc: audio
+    },
+    {
+      title: 'Song Title 2',
+      artist: 'Artist Name 2',
+      albumArt: albumArt2,
+      year: 2004,
+      audioSrc: audio
+    },
+    {
+      title: 'Song Title 3',
+      artist: 'Artist Name 3',
+      albumArt: albumArt3,
+      year: 2008,
+      audioSrc: audio
+    },
+    {
+      title: 'Song Title 3',
+      artist: 'Artist Name 3',
+      albumArt: albumArt3,
+      year: 2008,
+      audioSrc: audio
+    },
+
+  ];
+
+  const mainWidth = isHam == true ? "60%" : "80%"
+
+  const [theme, setTheme] = useState('light');
+
+  const toggleTheme = () => {
+      setTheme(theme === 'light' ? 'dark' : 'light');
+  };
+
+  console.log("theme",theme)
 
   return (
-    <div className='app-main'>
+    <div className={theme == 'light' ? 'app-main light' : 'app-main dark'}>
       <BrowserRouter>
-        <Header setIsHam={setIsHam} isHam={isHam} />
+        <Header setIsHam={setIsHam} isHam={isHam} theme={theme} setTheme={setTheme}  toggleTheme={toggleTheme}/>
         <div className='app-main-cont'>
           <div className={isHam ? "nav" : "nav-hide"}>
             <Navbar setIsHam={setIsHam} isHam={isHam} />
           </div>
-          <div className='rem-nav'>
-            <Hero />
+          <div className='rem-nav' style={{ width: `${mainWidth}` }}>
             <Routes>
 
-              {/* <Route path='' element={<Hero />} /> */}
-              {/* <Route path='/gallery' element={<Gallery imageData={season1} />} />
-            <Route path='/2017' element={<Gallery imageData={y_2017} title={'2017 ( season 1 )'} seasons={seasons} value={4} />} />
-            <Route path='/2018' element={<Gallery imageData={y_2018} title={'2018 ( season 2 )'} seasons={seasons} value={4} />} />
-            <Route path='/2019' element={<Gallery imageData={y_2019} title={'2019 ( season 3 )'} seasons={seasons} value={4} />} />
-            <Route path='/2020' element={<Gallery imageData={y_2020} title={'2020 ( season 4 )'} seasons={seasons} value={4} />} />
-            <Route path='/2021' element={<Gallery imageData={y_2021} title={'2021 ( season 5 )'} seasons={seasons} value={4} />} />
-            <Route path='/2022' element={<Gallery imageData={y_2022} title={'2022 ( season 6 )'} seasons={seasons} value={4} />} />
-            <Route path='/kodai-S1' element={<Gallery imageData={Kodai_s1} title={'Kodai ( season 1)'} seasons={kodai_seasons} value={3} />} />
-            <Route path='/kodai-S2' element={<Gallery imageData={Kodai_s2} title={'Kodai ( season 2)'} seasons={kodai_seasons} value={3} />} />
-            <Route path='/kodai-S3' element={<Gallery imageData={Kodai_s3} title={'Kodai ( season 3)'} seasons={kodai_seasons} value={3} />} />
-            <Route path='/kodai-S4' element={<Gallery imageData={Kodai_s4} title={'Kodai ( season 4)'} seasons={kodai_seasons} value={3} />} />
-            <Route path='/kodai-S5' element={<Gallery imageData={Kodai_s5} title={'Kodai ( season 5)'} seasons={kodai_seasons} value={3} />} />
-            <Route path='/photos' element={<Gallery imageData={photo} title={'photo'} seasons={seasons} value={3} />} />
-            <Route path='/awards' element={<Gallery imageData={awards} title={'Awards'} value={3} />} />
+              <Route path='' element={<Hero songs={songs} />} />
+              <Route path='/gallery' element={<Gallery imageData={season1} />} />
+              <Route path='/2017' element={<Gallery imageData={y_2017} title={'2017 ( season 1 )'} seasons={seasons} value={4} />} />
+              <Route path='/2018' element={<Gallery imageData={y_2018} title={'2018 ( season 2 )'} seasons={seasons} value={4} />} />
+              <Route path='/2019' element={<Gallery imageData={y_2019} title={'2019 ( season 3 )'} seasons={seasons} value={4} />} />
+              <Route path='/2020' element={<Gallery imageData={y_2020} title={'2020 ( season 4 )'} seasons={seasons} value={4} />} />
+              <Route path='/2021' element={<Gallery imageData={y_2021} title={'2021 ( season 5 )'} seasons={seasons} value={4} />} />
+              <Route path='/2022' element={<Gallery imageData={y_2022} title={'2022 ( season 6 )'} seasons={seasons} value={4} />} />
+              <Route path='/kodai-s1' element={<Gallery imageData={Kodai_s1} title={'Kodai ( season 1)'} seasons={kodai_seasons} value={3} />} />
+              <Route path='/kodai-S2' element={<Gallery imageData={Kodai_s2} title={'Kodai ( season 2)'} seasons={kodai_seasons} value={3} />} />
+              <Route path='/kodai-S3' element={<Gallery imageData={Kodai_s3} title={'Kodai ( season 3)'} seasons={kodai_seasons} value={3} />} />
+              <Route path='/kodai-S4' element={<Gallery imageData={Kodai_s4} title={'Kodai ( season 4)'} seasons={kodai_seasons} value={3} />} />
+              <Route path='/kodai-S5' element={<Gallery imageData={Kodai_s5} title={'Kodai ( season 5)'} seasons={kodai_seasons} value={3} />} />
+              <Route path='/photos' element={<Gallery imageData={photo} title={'photo'} seasons={seasons} value={3} />} />
+              <Route path='/awards' element={<Gallery imageData={awards} title={'Awards'} value={3} />} />
 
-            <Route path='/videos' element={<VideoPlayer videoData={video} />} />
-            <Route path='/nomination' element={<Nomination />} />
+              <Route path='/videos' element={<VideoPlayer videoData={video} />} />
+              <Route path='/nomination' element={<Nomination />} />
+              <Route path='/international-branch' element={<InternationalBranches />} />
 
-            <Route path='/contact-us' element={<Contact />} />
-            <Route path='/season2' element={<Gallery imageData={season1} value={3} />} />
-            <Route path='/about-us' element={<About />} />
-            <Route path='/home' element={<Home />} /> */}
+              <Route path='/contact-us' element={<Contact />} />
+              <Route path='/season2' element={<Gallery imageData={season1} value={3} />} />
+              <Route path='/about-us' element={<About />} />
             </Routes>
 
           </div>
           <div className='rem-sub-nav'>
-            {/* <Music /> */}
+            <Music songs={songs} />
           </div>
-          
+
 
         </div>
         <Footer />
