@@ -98,13 +98,19 @@ const Navbar = ({ isHam, setIsHam, theme }) => {
           <h3 className='text-xl font-medium my-2 p-1'>Social media</h3>
           <ul className='flex gap-5 p-1'>
             <li className='cursor-pointer'>
+              <a href='https://www.youtube.com/channel/UCCi2Ud8YLOYOzdib9tVHEZg' target='_blank'>
               <span><BsYoutube size={30} color='red' /></span>
+              </a>
             </li>
             <li className='cursor-pointer'>
+              <a href='https://www.facebook.com/people/Tamil-Cultural-Academy/100078538407715/?locale=hi_IN' target='_blank'>
               <span><BsFacebook size={30} color='blue' /></span>
+              </a>
             </li>
             <li className='cursor-pointer'>
+              <a href='https://www.instagram.com/tamilculturalacademy/?igsh=czVqa2tpZ24xdTli' target='_blank'>
               <span><CgInstagram size={30} color='purple' /></span>
+              </a>
             </li>
             {/* <li className='cursor-pointer'><span><BiLogoWhatsappSquare size={25} color='green' /></span></li> */}
           </ul>
