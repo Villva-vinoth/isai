@@ -112,15 +112,23 @@ function App() {
 
   console.log("theme",theme)
 
+  const css = theme =='dark' ? {
+    backgroundColor:"#530018",
+    width: `${mainWidth}`,
+  }:{
+    backgroundColor:"white",
+    width: `${mainWidth}`,
+  }
+
   return (
     <div className={theme == 'light' ? 'app-main light' : 'app-main dark'}>
       <BrowserRouter>
         <Header setIsHam={setIsHam} isHam={isHam} theme={theme} setTheme={setTheme}  toggleTheme={toggleTheme}/>
         <div className='app-main-cont'>
           <div className={isHam ? "nav" : "nav-hide"}>
-            <Navbar setIsHam={setIsHam} isHam={isHam} />
+            <Navbar setIsHam={setIsHam} isHam={isHam} theme={theme} />
           </div>
-          <div className='rem-nav' style={{ width: `${mainWidth}` }}>
+          <div className='rem-nav' style={css}>
             <Routes>
 
               <Route path='' element={<Hero songs={songs} />} />
@@ -150,7 +158,7 @@ function App() {
 
           </div>
           <div className='rem-sub-nav'>
-            <Music songs={songs} />
+            <Music songs={songs} theme={theme}/>
           </div>
 
 

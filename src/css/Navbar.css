@@ -1,9 +1,13 @@
 .navigation-cont{
-    background-color: rgb(250, 250, 250);
+    background-color: transparent;
     width: 100%;
     /* background-color: red; */
 }
 .active-navbar{
     color: red;
     border-right: 2px red solid;
+}
+
+.navigation-btn{
+    visibility: hidden;
 }

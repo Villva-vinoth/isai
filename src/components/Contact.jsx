@@ -29,7 +29,7 @@ const Contact = () => {
 
   return (
     <>
-      <div className='contactpage bg-[white] w-[100%]'>
+      <div className='contactpage bg-transparent w-[100%]'>
         <h2 className='text-xl font-bold p-2 mx-8'>Location :</h2>
         <iframe 
           src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7772.066541214467!2d80.292197!3d13.097078000000002!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a526f4f896fe035%3A0x171c58b3055a974b!2s136%2C%20Linghi%20Chetty%20Street%2C%20Mannadi%2C%20George%20Town%2C%20Chennai%2C%20Tamil%20Nadu%20600001%2C%20India!5e0!3m2!1sen!2sus!4v1716795713956!5m2!1sen!2sus" 

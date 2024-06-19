@@ -15,7 +15,7 @@ const Hero = ({ songs }) => {
     <>
       <div className="home-main-container">
         <div className="my-1   w-[95%] flex flex-col main-container">
-          <h1 className="lg:text-2xl md:text-2xl text-lg   font-bold  mt-1">Trending Hits</h1>
+          <h1 className="lg:text-2xl md:text-2xl text-lg   font-bold  mt-1 py-3">Trending Hits</h1>
           <img src={post1} alt="text" width={'95%'} className="div-image shadow-home" />
         </div>
         {/* <div className="my-1 home-music-main-container">

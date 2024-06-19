@@ -119,9 +119,9 @@ function InternationalBranches() {
     };
 
     return (
-        <div className='bg-[white] w-[95%] mx-auto'>
+        <div className='bg-transparent w-[95%] mx-auto'>
 
-            <div className="international-header-container">
+            <div className="international-header-container text-[#000]">
                 {internationalData.map((country, index) => (
                     <div key={index} onClick={() => setSelectedCountry(country)} className='cursor-pointer p-1 min-w-[150px]'>
                         <img src={country.img} alt={country.title} />

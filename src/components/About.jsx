@@ -6,14 +6,14 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 const paragraphStyle = {
-    WebkitLineClamp:5,
-    WebkitBoxOrient:"vertical",
-    overflow:"hidden",
-    display:"-webkit-box"
+    WebkitLineClamp: 5,
+    WebkitBoxOrient: "vertical",
+    overflow: "hidden",
+    display: "-webkit-box"
 }
 const About = () => {
 
-    const [isOpen,setIsOpen] = useState(false)
+    const [isOpen, setIsOpen] = useState(false)
 
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -76,14 +76,93 @@ const About = () => {
         },
     ]
 
+    const PrevButton = ({ onClick, currentSlide, style, ...props }) => {
+        return (
+            <div
+                onClick={onClick}
+                style={{
+                    cursor: 'pointer',
+                    boxShadow: "0 2px 5px rgb(207, 207, 207)",
+                    backgroundColor: "grey",
+                    // borderRadius:"10px",
+                    width: "20px",
+                    height:"40px",
+                    fontSize:"20px",
+                    textAlign: "center",
+                    position: "absolute",
+                    top: "30%",
+                    zIndex: "9",
+                    left: "10px",
+                    ...style
+                }}
+                {...props}
+                className={`award-nav `}
+                aria-hidden="true"
+            >
+                {'<'}
+            </div>
+        );
+    };
+
+    const NextButton = ({ onClick, currentSlide, slideCount, style, ...props }) => {
+        return (
+            <div
+                onClick={onClick}
+                style={{
+                    cursor: 'pointer',
+                    boxShadow: "0 2px 5px rgb(207, 207, 207)",
+                    backgroundColor: "grey",
+                    // borderRadius:"10px",
+                    width: "20px",
+                    height:"40px",
+                    textAlign: "center",
+                    fontSize:"20px",
+                    position: "absolute",
+                    top: "30%",
+                    right: "10px",
+                    zIndex: "99",
+                    ...style
+                }}
+                {...props}
+                className={`award-nav`}
+                aria-hidden="true"
+            >
+                {'>'}
+            </div>
+        );
+    };
 
 
 
-
+    var settings = {
+        dots: false,
+        infinite: true,
+        autoplay: true,
+        autoplaySpeed: 1000,
+        speed: 1000,
+        slidesToShow: 2,
+        slidesToScroll: 1,
+        prevArrow: <PrevButton />,
+        nextArrow: <NextButton />,
+        responsive: [
+            {
+                breakpoint: 1023,
+                settings: {
+                    slidesToShow: 3
+                }
+            },
+            {
+                breakpoint: 767,
+                settings: {
+                    slidesToShow: 2 
+                }
+            }
+        ]
+    };
 
     return (
         <div>
-            <div className='w-full bg-white py-2 px-4'>
+            <div className='w-full bg-transparent py-2 px-4'>
                 <p className='text-[#D24545] font-bold lg:text-xl text-center lg:p-3 md:p-3 p-2'>About Us</p>
                 <div className='w-[90%] mx-auto flex p-2 first-about-container rounded-2xl about-mobile'>
                     <div className='w-[100%] basis-1/3 flex items-center '>
@@ -92,7 +171,7 @@ const About = () => {
                     <div className='flex flex-col justify-center p-2 basis-2/3'>
                         <h1 className='text-lg font-bold lg:text-xl'>Welcome to the &nbsp;< br />
                             <span className='text-[#D24545] alegreya-class italic '>  Tamil Cultural Academy</span> </h1>
-                        <p className='alegreya-class  text-sm   italic font-medium lg:text-left text-justify'>
+                        <p className='  text-sm   italic font-medium lg:text-left text-justify'>
                             &nbsp; &nbsp; &nbsp; Tamil Cultural Academy is a registered social & cultural trust and a non – profitable organizationsince 1998.
                             It was formerly known as Tamil Nadu Arts & Cultural Academy. The academy has been an organiser for many cultural
                             programmes with reputed Carnatic Singers; the academy was also an organiser of a number of Tamil Film Industry in
@@ -107,10 +186,10 @@ const About = () => {
                 <div className='border-container'></div>
 
                 <div className='lg:mx-auto w-[90%] mx-auto lg:py-2'>
-                    <h1 className='text-[#000] exo-2-class  lg:text-xl text-lg font-bold'>ABOUT THE EVENT:</h1>
+                    <h1 className='text-[#000]   lg:text-xl text-lg font-bold'>ABOUT THE EVENT:</h1>
                     <h2 className='lg:text-lg text-lg py-2 text-[grey]'>WHAT AND WHY IS MEGA ISAI VIZHA (மெகா இசை விழா) ?</h2>
                     <p className='alegreya-class lg:text-lg text-lg italic font-semibold mt-2 lg:text-left text-justify text-[grey]' style={
-                       !isOpen ? paragraphStyle : null
+                        !isOpen ? paragraphStyle : null
                     } >
                         &nbsp; &nbsp; &#160; Mega Isai Vizha is a unique name with intent of recognizing the number of Tamil Poets and Carnatic Music Composers, who were well articulated their devotion through their music centric literatures for several centuries.
                         <br />
@@ -135,9 +214,9 @@ const About = () => {
 
                         &nbsp; &nbsp; &#160; The reason of ‘Margazhi Isai Vizha’ is unlimited in these lines, which Tamil Cultural Academy has the vision to make it as the Mega Marghazhi Isai Vizha in the coming years for the Tamil Cultural followers world-wide.
                     </p>
-                    <button className='about-read-more' onClick={()=>setIsOpen(!isOpen)}>
+                    <button className='about-read-more' onClick={() => setIsOpen(!isOpen)}>
                         {
-                            !isOpen ? "Read more..." :"Read less..."
+                            !isOpen ? "Read more..." : "Read less..."
                         }
 
                     </button>
@@ -145,7 +224,7 @@ const About = () => {
                 <div className='border-container'></div>
 
                 <div className='lg:mx-auto w-[90%] mx-auto lg:py-2  text-[#] mt-2'>
-                    <h1 className='text-[#000] lg:text-xl exo-2-class text-lg font-bold lg:py-2 py-1'>ABOUT THE FOUNDER & PRESIDENT:
+                    <h1 className='text-[#000] lg:text-xl text-lg font-bold lg:py-2 py-1'>ABOUT THE FOUNDER & PRESIDENT:
                     </h1>
                     <p className='alegreya-class lg:text-lg text-lg italic font-semibold mt-2 lg:text-left text-justify text-[grey]'>
                         &nbsp; &nbsp; &#160;Tamil Cultural Academy founded by Shri Arokiaraj Jaganathan, was one of the founder of the similar popular event series in Chennai. Shri Arokiaraj Jaganathan has over three
@@ -161,30 +240,35 @@ const About = () => {
                 <div className='border-container'></div>
 
                 <div className='lg:mx-auto w-[90%] mx-auto lg:py-2 text-[#] mt-2'>
-                    <h1 className='text-[#000] lg:text-xl exo-2-class text-xl font-bold lg:py-2 py-1'>Trust Members :
+                    <h1 className='text-[#000] lg:text-xl  text-xl font-bold lg:py-2 py-1'>Trust Members :
                     </h1>
-                    <div className="trust-container">
-                        {
-                            trustMember.map((item, index) => (
-                                <div key={index} className="trust-member">
-                                    <img src={item.img} alt="image" className="w-20 h-20 rounded mb-4" />
-                                    <div className="flex flex-col items-center text-center">
-                                        <h1 className="font-bold">{item.person}</h1>
-                                        <h2 className="text-sm text-gray-600">{item.job}</h2>
+
+                   <div className='w-[100%]'>
+                   <Slider {...settings}>
+                        {trustMember.map((item, index) => {
+                            return (
+                                <div className='m-1 '>
+                                    <div key={index} className='w-[90%] trust-member'>
+                                    <img src={item.img} alt='' className='w-20 h-20 rounded' />
+                                    <div className='flex flex-col items-center jusity-center'>
+                                        <h1 className='font-bold '>{item.person}</h1>
+                                        <h2 className='text-sm text-grey-600'>{item.job}</h2>
                                     </div>
                                 </div>
-                            ))
-                        }
-                    </div>
+                                </div>
+                            );
+                        })}
+                    </Slider>
+                   </div>
 
                 </div>
                 <div className='border-container'></div>
 
                 <div className='lg:mx-auto w-[90%] mx-auto text-[#] mt-2'>
-                    <h1 className='text-[#000] lg:text-xl exo-2-class text-xl font-bold lg:py-2 py-1'> International Trust Members :
+                    <h1 className='text-[#000] lg:text-xl  text-xl font-bold lg:py-2 py-1'> International Trust Members :
                     </h1>
                     <div className='grid lg:grid-cols-4	grid-cols-1 gap-4'>
-                        <div className='flex flex-col border-4 rounded-2xl items-center p-2  cursor-pointer'>
+                        <div className='flex flex-col border-4 rounded-2xl items-center justify-center p-2  cursor-pointer'>
                             <img src={image1} alt='img' className='w-40 h-40' />
                             <div>
                                 <h1>Rosaiyya Susikaran	</h1>
@@ -208,7 +292,7 @@ const About = () => {
 
                             <div>
                                 <h1>Mr. Mohamed Riyasudeen	</h1>
-                                <h2>	President - Gulf Region<span className='text-[#d24545] alegreya-class text-xl italic'>
+                                <h2>	President - Gulf Region<span className='text-[#d24545] alegreya-class text-xl hover:text-black italic'>
                                     &nbsp; Tamil Cultural Academy</span></h2>
                             </div>
                         </div>

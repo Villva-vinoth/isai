@@ -8,6 +8,11 @@ import { IoIosCloseCircle } from "react-icons/io";
 import { FcNext } from "react-icons/fc";
 import { FcPrevious } from "react-icons/fc";
 import Loading from "./Loader";
+import { MdEvent } from "react-icons/md";
+import { IoMdPhotos } from "react-icons/io";
+import { CiVideoOn } from "react-icons/ci";
+import { TfiVideoClapper } from "react-icons/tfi";
+
 
 
 function Gallery({ imageData, title, value, seasons, visible }) {
@@ -162,9 +167,9 @@ function Gallery({ imageData, title, value, seasons, visible }) {
             {
               seasons && (
                 <div className="p-1 flex gap-10 mx-4">
-                  <div>
-                    <label>season :</label>
-                    <select onChange={(e)=>handleClick(e.target.value)} className="p-0 mx-1">
+                  <div className="flex gap-5">
+                    <label className="flex gap-2"><span><MdEvent size={20}/></span>season :</label>
+                    <select onChange={(e)=>handleClick(e.target.value)} className="p-0 mx-1 border rounded-xl text-[#000]">
                       {
                          seasons.map((item,index)=>{
                           return(
@@ -174,8 +179,8 @@ function Gallery({ imageData, title, value, seasons, visible }) {
                       }
                     </select>
                   </div>
-                  <div className="cursor-pointer" onClick={()=>nav('/photos')}>photos</div>
-                  <div className="cursor-pointer"  onClick={()=>nav('/videos')}>Videos</div>
+                  <div className="cursor-pointer flex gap-2" onClick={()=>nav('/photos')}><span><IoMdPhotos size={20}/></span>photos</div>
+                  <div className="cursor-pointer flex gap-2"  onClick={()=>nav('/videos')}><span><CiVideoOn size={20}/></span>Videos</div>
                 </div>
               ) 
             }

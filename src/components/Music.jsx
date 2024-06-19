@@ -8,7 +8,7 @@ import { TfiControlShuffle } from "react-icons/tfi";
 import { GiSoundOn, GiSoundOff } from "react-icons/gi";
 import { FaSearch } from "react-icons/fa";
 import { FaPlay } from "react-icons/fa";
-function Music({songs}) {
+function Music({songs,theme}) {
     const [currentSongIndex, setCurrentSongIndex] = useState(0);
     const currentSong = songs[currentSongIndex];
 
@@ -104,8 +104,15 @@ function Music({songs}) {
         setCurrentSongIndex(randomIndex);
     };
 
+    const css = theme == 'dark' ? {
+        backgroundColor:"#530018"
+    }: {
+        backgroundColor:"#f2f2f2"
+    }
+
+
     return (
-        <div className="column-container">
+        <div className="column-container" style={css}>
             <h3 className="p-2 font-bold">QUICK SEARCH</h3>
             <fieldset className="music-quick-search">
                 <input type="text" placeholder="Type here to search" />

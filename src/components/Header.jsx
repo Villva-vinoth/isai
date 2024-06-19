@@ -13,10 +13,14 @@ const Header = ({ isHam, setIsHam,theme,setTheme,toggleTheme }) => {
     //     setTheme(theme === 'light' ? 'dark' : 'light');
     // };
 
-    
+    const css = theme == 'dark' ? {
+        backgroundColor:"#530018"
+    }: {
+        backgroundColor:"white"
+    }
 
     return (
-        <div className='flex w-[100%] justify-between bg-[white] header-main-div'>
+        <div className='flex w-[100%] justify-between  header-main-div' style={css}>
             <div className='p-2 header-sub-one' onClick={() => { setIsHam(!isHam) }}>{isHam == false ? <RiMenuFill size={40} /> : <RiMenu4Fill size={40} />}</div>
             <div className='header-sub-two hidden-com'>
                 <ul className='flex justify-evenly p-1 hidden-com'>

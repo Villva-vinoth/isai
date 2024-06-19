@@ -6,14 +6,13 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    /* background-color: red; */
 }
 .header-sub-one{
     flex-basis: 5%;
+    /* visibility: none; */
 }
 .header-sub-two{
     flex-basis: 60%;
-    /* background-color: blue; */
 }
 .header-sub-two ul{
     display: flex;
