@@ -44,7 +44,7 @@ const Contact = () => {
         <h2 className='text-xl font-bold p-1 my-2'>Contact Us :</h2>
         <div className="form-row">
           <div className="formss">
-            <label htmlFor="name"><IoPerson /> Name:</label>
+            <label htmlFor="name" className='contact-name'><IoPerson /> Name:</label>
             <input
               type="text"
               id="name"
@@ -55,7 +55,7 @@ const Contact = () => {
             />
           </div>
           <div className="formss">
-            <label htmlFor="email"><MdEmail /> Email:</label>
+            <label htmlFor="email" className='contact-name'><MdEmail /> Email:</label>
             <input
               type="email"
               id="email"
@@ -66,7 +66,7 @@ const Contact = () => {
             />
           </div>
           <div className="formss">
-            <label htmlFor="subject"><FaInfoCircle /> Subject:</label>
+            <label htmlFor="subject" className='contact-name'><FaInfoCircle /> Subject:</label>
             <input
               type="text"
               id="subject"
@@ -78,7 +78,7 @@ const Contact = () => {
           </div>
         </div>
         <div className="formss">
-          <label htmlFor="phone"><FaMessage /> Message:</label>
+          <label htmlFor="phone" className='contact-name'><FaMessage /> Message:</label>
           <input
             type="tel"
             id="phone"

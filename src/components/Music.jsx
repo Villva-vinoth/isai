@@ -6,17 +6,26 @@ import { CgPlayTrackNextO } from "react-icons/cg";
 import { LuRefreshCw } from "react-icons/lu";
 import { TfiControlShuffle } from "react-icons/tfi";
 import { GiSoundOn, GiSoundOff } from "react-icons/gi";
-import { FaSearch } from "react-icons/fa";
-import { FaPlay } from "react-icons/fa";
-function Music({songs,theme}) {
-    const [currentSongIndex, setCurrentSongIndex] = useState(0);
-    const currentSong = songs[currentSongIndex];
+import { useNavigate } from "react-router-dom";
+import { MdNavigateNext } from "react-icons/md";
 
-    const audioRef = useRef(null);
+import mega2 from '../assets/2022/4.jpg';
+import mega1 from '../assets/2021/6.jpeg';
+import kodai1 from '../assets/music/musicimg1.png';
+import kodai2 from '../assets/ki4/cover16.jpg';
+
+function Music({ songs, theme }) {
+    const nav = useNavigate();
+
+    const [currentSongIndex, setCurrentSongIndex] = useState(0);
     const [isPlaying, setIsPlaying] = useState(false);
     const [isMuted, setIsMuted] = useState(false);
     const [currentTime, setCurrentTime] = useState(0);
     const [duration, setDuration] = useState(0);
+
+    const audioRef = useRef(null);
+
+    const currentSong = songs[currentSongIndex];
 
     useEffect(() => {
         const audio = audioRef.current;
@@ -36,23 +45,29 @@ function Music({songs,theme}) {
             audio.removeEventListener('timeupdate', updateTime);
             audio.removeEventListener('loadedmetadata', updateDuration);
         };
-    }, [currentSongIndex]);
+    }, []);
 
     useEffect(() => {
         const audio = audioRef.current;
+        audio.pause();
+        audio.load();
         if (isPlaying) {
-            audio.play();
-        } else {
-            audio.pause();
+            const playPromise = audio.play();
+            if (playPromise !== undefined) {
+                playPromise.catch(error => console.error("Failed to play audio: ", error));
+            }
         }
-    }, [currentSongIndex, isPlaying]);
+    }, [currentSongIndex]);
 
     const togglePlayPause = () => {
         const audio = audioRef.current;
         if (isPlaying) {
             audio.pause();
         } else {
-            audio.play();
+            const playPromise = audio.play();
+            if (playPromise !== undefined) {
+                playPromise.catch(error => console.error("Failed to play audio: ", error));
+            }
         }
         setIsPlaying(!isPlaying);
     };
@@ -75,26 +90,27 @@ function Music({songs,theme}) {
     };
 
     const handlePrevious = () => {
-        if (currentSongIndex > 0) {
-            setCurrentSongIndex(currentSongIndex - 1);
-        } else {
-            setCurrentSongIndex(songs.length - 1);
-        }
+        setCurrentSongIndex((prevIndex) =>
+            prevIndex > 0 ? prevIndex - 1 : songs.length - 1
+        );
+        setIsPlaying(false);
     };
 
     const handleNext = () => {
-        if (currentSongIndex < songs.length - 1) {
-            setCurrentSongIndex(currentSongIndex + 1);
-        } else {
-            setCurrentSongIndex(0); 
-        }
+        setCurrentSongIndex((prevIndex) =>
+            prevIndex < songs.length - 1 ? prevIndex + 1 : 0
+        );
+        setIsPlaying(false);
     };
 
     const handleRefresh = () => {
         const audio = audioRef.current;
         audio.currentTime = 0;
         if (!isPlaying) {
-            audio.play();
+            const playPromise = audio.play();
+            if (playPromise !== undefined) {
+                playPromise.catch(error => console.error("Failed to play audio: ", error));
+            }
             setIsPlaying(true);
         }
     };
@@ -102,34 +118,59 @@ function Music({songs,theme}) {
     const handleShuffle = () => {
         const randomIndex = Math.floor(Math.random() * songs.length);
         setCurrentSongIndex(randomIndex);
+        setIsPlaying(false);
     };
 
-    const css = theme == 'dark' ? {
-        backgroundColor:"#530018"
-    }: {
-        backgroundColor:"#f2f2f2"
-    }
+    const css = theme === 'dark' ? {
+        backgroundColor: "#530018"
+    } : {
+        backgroundColor: "#f2f2f2"
+    };
 
+    const latest = [
+        {
+            id: 1,
+            event: "kodai Isai",
+            year: "season 5",
+            router: "/kodai-s5",
+            albumArt: kodai1
+        },
+        {
+            id: 2,
+            event: "Kodai Isai",
+            year: "season 4",
+            router: "/kodai-s4",
+            albumArt: kodai2
+        },
+        {
+            id: 3,
+            event: "Mega Isai",
+            year: "season 6",
+            router: "/2022",
+            albumArt: mega2
+        },
+        {
+            id: 4,
+            event: "Mega Isai",
+            year: "season 5",
+            router: "/2021",
+            albumArt: mega1
+        },
+    ];
 
     return (
         <div className="column-container" style={css}>
-            <h3 className="p-2 font-bold">QUICK SEARCH</h3>
-            <fieldset className="music-quick-search">
-                <input type="text" placeholder="Type here to search" />
-                <button><FaSearch />
-                </button>
-            </fieldset>
-            <h3 className="p-2 font-bold">MOST POPULAR</h3>
+            <h3 className="p-2 font-bold">Latest Events</h3>
             <div className="music-sub-cont">
-                {songs.map((song, index) => (
-                    <div key={index} className="songs-container" onClick={() => {setCurrentSongIndex(index);handleRefresh()}}>
-                        <img src={song.albumArt} alt={`${song.title} album art`} />
+                {latest.map((season, index) => (
+                    <div className="songs-container" key={index} onClick={() => { nav(`${season.router}`) }}>
+                        <img src={season.albumArt} alt={`${season.event} album art`} />
                         <div className="music-btn-controls">
                             <div className="music-title-container">
-                                <h3>{song.title}</h3>
-                                <h4>{song.year}</h4>
+                                <h3>{season.event}</h3>
+                                <h4>{season.year}</h4>
                             </div>
-                            <button><FaPlay /></button>
+                            <button className="play-btn"><MdNavigateNext className="" size={20} /></button>
                         </div>
                     </div>
                 ))}
@@ -141,7 +182,7 @@ function Music({songs,theme}) {
                         <h2>{currentSong.title}</h2>
                         <p>{currentSong.artist}</p>
                         <div className="input-container">
-                            <div className="time">{formatTime(currentTime)} </div>
+                            <div className="time">{formatTime(currentTime)}</div>
                             <input
                                 type="range"
                                 min="0"
@@ -154,12 +195,12 @@ function Music({songs,theme}) {
                     </div>
                     <div className="button-container">
                         <LuRefreshCw className="footer-icon" onClick={handleRefresh} />
-                        <button className="button-container-sub-1" onClick={handlePrevious}><ImPrevious /></button>
+                        <button className="button-container-sub-1" onClick={() => { handlePrevious(); handleRefresh() }}><ImPrevious /></button>
                         <button onClick={togglePlayPause} className="button-container-sub">
                             {!isPlaying ? <FaRegPlayCircle /> : <FaRegPauseCircle />}
                         </button>
-                        <button className="button-container-sub-1" onClick={handleNext}><CgPlayTrackNextO /></button>
-                        <TfiControlShuffle className="footer-icon" onClick={handleShuffle} />
+                        <button className="button-container-sub-1" onClick={() => { handleNext(); handleRefresh() }}><CgPlayTrackNextO /></button>
+                        <TfiControlShuffle className="footer-icon" onClick={() => { handleShuffle(); handleRefresh() }} />
                     </div>
                     <div onClick={toggleMute} className="sound">
                         {isMuted ? <GiSoundOff /> : <GiSoundOn />}

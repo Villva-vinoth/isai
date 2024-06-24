@@ -77,8 +77,8 @@ const Sliders = () => {
         dots: false,
         infinite: true,
         autoplay: true,
-        autoplaySpeed: 1000,
-        speed: 1000,
+        autoplaySpeed: 2000,
+        speed: 2000,
         slidesToShow: 5,
         slidesToScroll: 1,
         prevArrow: <PrevButton />,
@@ -100,8 +100,9 @@ const Sliders = () => {
     };
 
     return (
-        <div className='my-1 slider-main-continer'>
+        <div className='my-1 slider-main-continer '>
             <h1 className='lg:text-2xl md:text-2xl text-lg font-bold mt-1'>Supporters</h1>
+            <div className='bg-white'>
             <Slider {...settings}>
                 {support.map((item, index) => {
                     return (
@@ -111,6 +112,7 @@ const Sliders = () => {
                     );
                 })}
             </Slider>
+            </div>
         </div>
     );
 };

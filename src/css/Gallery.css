@@ -76,12 +76,48 @@
     align-items: center;
     color: wheat;
 }
+.seasons-contct{
+    width: 80%;
+    overflow: auto;
+}
+.seasons-contct::-webkit-scrollbar{
+    display: none;
+}
 
+
+.event-input-container{
+ background-color:white ;
+ box-shadow: 0 0 15px rgb(231, 231, 231), 0 0 20px  rgb(231, 231, 231)  ;
+ border-radius: 5px;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ padding: 1%;
+ color: black;
+ /* background-color: red; */
+ /* box-sizing: border-box; */
+  /* width: 00px; */
+  }
+.gallery-none{
+    border: none;
+    outline: none;
+    background-color: white;
+}
 @media (max-width:768px) {
     .click-to-view-icon{
         transform: translate(-80%,100%);
     }
     .image-rounded{
         width: 80%;
+    }
+}
+@media (max-width:767px) {
+    .seasons-contct{
+        width: 80%;
+        /* flex-direction: column; */
+        gap: 5px;
+    }
+    .event-input-container{
+        padding: 0.5%;
     }
 }

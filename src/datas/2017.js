@@ -29,8 +29,7 @@ let y_2017 = [
             {id:1, img:cover1},
             {id:2, img:cover2}
         ]
-    },
-    
+    }, 
     {
         id:2,
         img:image2

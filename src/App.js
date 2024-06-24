@@ -31,11 +31,19 @@ import Nomination from './components/Nomination';
 import Header from './components/Header';
 import Music from './components/Music';
 
-import albumArt1 from './assets/music/musicimg1.png';
-import albumArt2 from './assets/music/musicimg2.png';
-import albumArt3 from "./assets/music/musicimg3.png";
+import albumArt1 from './assets/music/musicimg2.jpg';
+import albumArt2 from './assets/music/musicimg3.jpg';
+import albumArt3 from "./assets/music/musicimg4.jpg";
+import albumArt4 from "./assets/music/musicimg5.jpg";
+
 import audio from "./assets/music/aud2.mp3"
+import audio1 from "./assets/music/ghatam.mp3"
+import audio2 from "./assets/music/mridangam-2.mp3"
+import audio3 from "./assets/music/mridangam-1.mp3"
+
+
 import InternationalBranches from './components/InternationalBranches';
+import Policy from './components/Policy';
 
 
 
@@ -72,39 +80,39 @@ function App() {
 
   const songs = [
     {
-      title: 'Song Title 1',
-      artist: 'Artist Name 1',
+      title: 'Veena',
+      artist: '',
       albumArt: albumArt1,
       year: 2002,
       audioSrc: audio
     },
     {
-      title: 'Song Title 2',
-      artist: 'Artist Name 2',
+      title: 'Ghatam',
+      artist: '',
       albumArt: albumArt2,
       year: 2004,
-      audioSrc: audio
+      audioSrc: audio1
     },
     {
-      title: 'Song Title 3',
-      artist: 'Artist Name 3',
+      title: 'Mridhagam',
+      artist: '',
       albumArt: albumArt3,
       year: 2008,
-      audioSrc: audio
+      audioSrc: audio2
     },
     {
-      title: 'Song Title 3',
-      artist: 'Artist Name 3',
-      albumArt: albumArt3,
+      title: 'Mridhagam',
+      artist: '',
+      albumArt: albumArt4,
       year: 2008,
-      audioSrc: audio
+      audioSrc: audio3
     },
 
   ];
 
   const mainWidth = isHam == true ? "60%" : "80%"
 
-  const [theme, setTheme] = useState('light');
+  const [theme, setTheme] = useState('dark');
 
   const toggleTheme = () => {
       setTheme(theme === 'light' ? 'dark' : 'light');
@@ -144,7 +152,7 @@ function App() {
               <Route path='/kodai-S3' element={<Gallery imageData={Kodai_s3} title={'Kodai ( season 3)'} seasons={kodai_seasons} value={3} />} />
               <Route path='/kodai-S4' element={<Gallery imageData={Kodai_s4} title={'Kodai ( season 4)'} seasons={kodai_seasons} value={3} />} />
               <Route path='/kodai-S5' element={<Gallery imageData={Kodai_s5} title={'Kodai ( season 5)'} seasons={kodai_seasons} value={3} />} />
-              <Route path='/photos' element={<Gallery imageData={photo} title={'photo'} seasons={seasons} value={3} />} />
+              <Route path='/photos' element={<Gallery imageData={photo} title={'photo'}  value={3} />} />
               <Route path='/awards' element={<Gallery imageData={awards} title={'Awards'} value={3} />} />
 
               <Route path='/videos' element={<VideoPlayer videoData={video} />} />
@@ -154,6 +162,8 @@ function App() {
               <Route path='/contact-us' element={<Contact />} />
               <Route path='/season2' element={<Gallery imageData={season1} value={3} />} />
               <Route path='/about-us' element={<About />} />
+              <Route path='/policy' element={<Policy />} />
+
             </Routes>
 
           </div>

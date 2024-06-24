@@ -25,7 +25,7 @@ let y_2018 = [
             {id:3,img:cover3},
             {id:4,img:cover4},
             {id:5,img:cover5},
-            {id:6,img:cover6},
+            // {id:6,img:cover6},
             {id:7,img:cover7},
             {id:8,img:cover8},
             {id:9,img:cover9},

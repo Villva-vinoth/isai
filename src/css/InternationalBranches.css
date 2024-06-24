@@ -192,6 +192,7 @@
         flex-direction: row;
         width: 80%;
         position: relative;
+        color: black;
     }
     
     .hiden-display-div {

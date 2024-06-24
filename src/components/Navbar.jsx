@@ -66,8 +66,8 @@ const Navbar = ({ isHam, setIsHam, theme }) => {
             eventSubMenu &&
             (
               <ul className='pt-1 px-10'>
-                <li className={window.location.pathname == '/kodai-s1' ? 'p-1 flex gap-5 items-center cursor-pointer active-navbar' : 'p-1 flex gap-5 items-center cursor-pointer'} onClick={() => { nav('/kodai-s1'); handleNav(); }}>Kodai isai</li>
-                <li className={window.location.pathname == '/2017' ? 'p-1 flex gap-5 items-center cursor-pointer active-navbar' : 'p-1 flex gap-5 items-center cursor-pointer'} onClick={() => { nav('/2017'); handleNav(); }}>Mega isai</li>
+                <li className={window.location.pathname == '/kodai-s1' ? 'p-1 flex gap-5 items-center cursor-pointer active-navbar' : 'p-1 flex gap-5 items-center cursor-pointer'} onClick={() => { nav('/kodai-s1'); handleNav(); }}>Kodai Isai</li>
+                <li className={window.location.pathname == '/2017' ? 'p-1 flex gap-5 items-center cursor-pointer active-navbar' : 'p-1 flex gap-5 items-center cursor-pointer'} onClick={() => { nav('/2017'); handleNav(); }}>Mega Isai</li>
               </ul>
             )
           }

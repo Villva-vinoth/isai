@@ -30,7 +30,7 @@ const Header = ({ isHam, setIsHam,theme,setTheme,toggleTheme }) => {
                 </ul>
             </div>
             <div className='text-center  mobile' onClick={()=>nav('/')}>
-                Tamil Cultral Acadamy
+                Tamil Cultural Academy
             </div>
             <div className="toggle-container flex gap-5 items-center">
                 <input type="checkbox" id="switch" checked={theme === 'dark'} onChange={toggleTheme} />

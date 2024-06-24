@@ -166,21 +166,23 @@ function Gallery({ imageData, title, value, seasons, visible }) {
           </div> */}
             {
               seasons && (
-                <div className="p-1 flex gap-10 mx-4">
-                  <div className="flex gap-5">
-                    <label className="flex gap-2"><span><MdEvent size={20}/></span>season :</label>
-                    <select onChange={(e)=>handleClick(e.target.value)} className="p-0 mx-1 border rounded-xl text-[#000]">
+                <div className="p-1 flex gap-10 mx-4  seasons-contct">
+                
+                  <div className="flex gap-2  event-input-container">
+                    
+                    <label className="flex gap-1 text-sm"><span><MdEvent size={20}/></span>Season:</label>
+                    <select onChange={(e)=>handleClick(e.target.value)} className="p-0 mx-1  rounded-xl text-[#000] gallery-none">
                       {
                          seasons.map((item,index)=>{
                           return(
-                          <option key={index} value={item}>{item}</option>
+                          <option key={index} value={item} >{item}</option>
                         )
                         })
                       }
                     </select>
-                  </div>
-                  <div className="cursor-pointer flex gap-2" onClick={()=>nav('/photos')}><span><IoMdPhotos size={20}/></span>photos</div>
-                  <div className="cursor-pointer flex gap-2"  onClick={()=>nav('/videos')}><span><CiVideoOn size={20}/></span>Videos</div>
+                  </div >
+                  <div className="cursor-pointer flex gap-2 event-input-container" onClick={()=>nav('/photos')}><span><IoMdPhotos size={20}/></span>Photos</div>
+                  <div className="cursor-pointer flex gap-2 event-input-container"  onClick={()=>nav('/videos')}><span><CiVideoOn size={20}/></span>Videos</div>
                 </div>
               ) 
             }
@@ -189,7 +191,7 @@ function Gallery({ imageData, title, value, seasons, visible }) {
 
         {
           refreshState == true ? (<Loading />):(
-            <div className="lg:basis-11/12 mx-auto basis container-div">
+            <div className="lg:basis-11/12 mx-auto basis container-div my-4">
             <h1 className="text-center text-2xl font-bold alegreya-class text-[red] g-high-light">{title}</h1>
 
             <div className=" columns-1  lg:p-4 p-1">

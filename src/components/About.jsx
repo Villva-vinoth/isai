@@ -138,8 +138,8 @@ const About = () => {
         dots: false,
         infinite: true,
         autoplay: true,
-        autoplaySpeed: 1000,
-        speed: 1000,
+        autoplaySpeed: 3000,
+        speed: 3000,
         slidesToShow: 2,
         slidesToScroll: 1,
         prevArrow: <PrevButton />,
@@ -148,13 +148,13 @@ const About = () => {
             {
                 breakpoint: 1023,
                 settings: {
-                    slidesToShow: 3
+                    slidesToShow: 2
                 }
             },
             {
                 breakpoint: 767,
                 settings: {
-                    slidesToShow: 2 
+                    slidesToShow: 1 
                 }
             }
         ]
@@ -240,7 +240,7 @@ const About = () => {
                 <div className='border-container'></div>
 
                 <div className='lg:mx-auto w-[90%] mx-auto lg:py-2 text-[#] mt-2'>
-                    <h1 className='text-[#000] lg:text-xl  text-xl font-bold lg:py-2 py-1'>Trust Members :
+                    <h1 className='text-[#000] lg:text-xl  text-xl font-bold lg:py-2 py-1'>Trust Members:
                     </h1>
 
                    <div className='w-[100%]'>
@@ -251,7 +251,7 @@ const About = () => {
                                     <div key={index} className='w-[90%] trust-member'>
                                     <img src={item.img} alt='' className='w-20 h-20 rounded' />
                                     <div className='flex flex-col items-center jusity-center'>
-                                        <h1 className='font-bold '>{item.person}</h1>
+                                        <h1 className='font-bold'>{item.person}</h1>
                                         <h2 className='text-sm text-grey-600'>{item.job}</h2>
                                     </div>
                                 </div>
@@ -265,7 +265,7 @@ const About = () => {
                 <div className='border-container'></div>
 
                 <div className='lg:mx-auto w-[90%] mx-auto text-[#] mt-2'>
-                    <h1 className='text-[#000] lg:text-xl  text-xl font-bold lg:py-2 py-1'> International Trust Members :
+                    <h1 className='text-[#000] lg:text-xl  text-xl font-bold lg:py-2 py-1'> International Trust Members:
                     </h1>
                     <div className='grid lg:grid-cols-4	grid-cols-1 gap-4'>
                         <div className='flex flex-col border-4 rounded-2xl items-center justify-center p-2  cursor-pointer'>

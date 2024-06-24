@@ -45,10 +45,10 @@ let y_2022 = [
     //         {id:2, img:cover2}
     //     ]
     // },
-    {
-        id:1,
-        img:image1
-    },
+    // {
+    //     id:1,
+    //     img:image1
+    // },
     {
         id:2,
         img:image2
@@ -117,10 +117,10 @@ let y_2022 = [
         id:18,
         img:image18
     },
-    {
-        id:1,
-        img:image1
-    },
+    // {
+    //     id:1,
+    //     img:image1
+    // },
     {
         id:19,
         img:image19

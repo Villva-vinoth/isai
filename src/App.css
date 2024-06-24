@@ -67,12 +67,14 @@
     }
     .rem-nav{
         margin-top: 15%;
-        flex-basis: 90%;
-        width: 90%;
+        flex-basis: 95%;
+        width: 100% !important;
+        /* background-color: red !important; */
     }
     .rem-sub-nav{
-        flex-basis: 90%;
-        width: 90%;
+        flex-basis: 95% !important;
+        width: 100% !important;
         margin-inline: auto;
+        /* background-color: red; */
     }
 }

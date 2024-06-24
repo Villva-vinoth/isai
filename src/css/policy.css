@@ -1,0 +1,22 @@
+
+.policy-container{
+    /* background-color: white; */
+    padding: 1%;
+    width: 100%;
+    margin-inline: auto;
+}
+.policy-container p{
+    padding: 1%;
+    font-size: 1rem;
+
+}
+.policy-container dl>dt{
+    font-size: 1.5rem;
+    padding: 1%;
+    font-weight: 500;
+}
+
+.policy-container dl>dd{
+    font-size: 1rem;
+    padding: 1%;
+}
